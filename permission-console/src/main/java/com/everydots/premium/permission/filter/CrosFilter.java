@@ -1,4 +1,4 @@
-package permission.filter;
+package com.everydots.premium.permission.filter;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 

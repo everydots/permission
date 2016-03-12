@@ -1,4 +1,4 @@
-package permission.beans;
+package com.everydots.premium.permission.beans;
 
 /**
  * 用户

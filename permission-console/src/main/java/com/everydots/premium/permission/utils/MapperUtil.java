@@ -1,4 +1,4 @@
-package permission.utils;
+package com.everydots.premium.permission.utils;
 
 import com.everydots.premium.permission.beans.User;
 import org.codehaus.jackson.map.ObjectMapper;

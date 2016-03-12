@@ -1,4 +1,4 @@
-package permission.controller;
+package com.everydots.premium.permission.controller;
 
 import com.everydots.premium.permission.beans.User;
 import com.everydots.premium.permission.utils.MapperUtil;
