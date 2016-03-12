@@ -2,6 +2,7 @@ package com.everydots.premium.permission.utils;
 
 import com.everydots.premium.permission.beans.User;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.powermock.api.mockito.internal.PowerMockitoCore;
 
 import java.io.IOException;
 
