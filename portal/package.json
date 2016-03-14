@@ -1,0 +1,14 @@
+{
+  "name": "portal",
+  "version": "0.0.1",
+  "description": "main page of everydots",
+  "script": {
+    "test": "grunt test"
+  },
+  "author": "Xiao Mingxing",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13"
+  }
+}

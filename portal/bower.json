@@ -1,0 +1,15 @@
+{
+  "name": "portal",
+  "description": "main page of everydots",
+  "main": "",
+  "authors": [
+    "Xiao Mingxing"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

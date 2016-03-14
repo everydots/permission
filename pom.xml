@@ -10,6 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>permission-console</module>
+        <module>permission-ui</module>
+        <module>permission-rest-services</module>
+        <module>portal</module>
     </modules>
 
 
