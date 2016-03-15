@@ -12,7 +12,7 @@
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/css/main.css">
   <!-- endbuild -->
 </head>
 <body ng-app="portalApp">
@@ -23,7 +23,7 @@
 
 <!-- Add your site or application content here -->
 <div class="header">
-  <div class="portal-transparent-header"></div>
+  <div portal-header-trans></div>
 </div>
 
 <div class="container">
@@ -50,8 +50,8 @@
 
 <!--App js-->
 <script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/navController.js"></script>
+<script src="scripts/directives/common/protalHeaderTrans.js"></script>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
 <script>

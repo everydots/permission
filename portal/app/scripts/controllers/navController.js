@@ -8,10 +8,8 @@
  * Controller of the portalApp
  */
 angular.module('portalApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('NavController', function ($scope) {
+    $scope.products = [
+      "Permission", "SCM"
+    ]
   });
