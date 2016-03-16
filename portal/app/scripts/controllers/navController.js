@@ -8,8 +8,7 @@
  * Controller of the portalApp
  */
 angular.module('portalApp')
-  .controller('NavController', function ($scope) {
-    $scope.products = [
-      "Permission", "SCM"
-    ]
-  });
+    .controller('NavController', function ($scope, messageCN) {
+        $scope.navItems = messageCN.nav_items;
+        $scope.navIcons = messageCN.nav_icons;
+    });
