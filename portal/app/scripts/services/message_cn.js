@@ -8,9 +8,7 @@ angular.module("portalApp")
             {text: "About me", url: "about"}
         ],
         nav_icons: [
-            {name: "QQ", title: "qq", src: "../images/aa.png"},
-            {name: "WeChat", title: "wechat", src: "../images/wechat.png"},
-            {name: "Facebook", title: "facebook", src: "../images/facebook.png"},
-            {name: "google+", title: "google+", src: "../images/google_plus.png"}
+            {name: "QQ", title: "qq", src: "../images/qq.png"},
+            {name: "WeChat", title: "wechat", src: "../images/wechat.png"}
         ]
     });

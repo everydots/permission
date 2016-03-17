@@ -3,29 +3,103 @@
   min-height: 47px;
   background: #37BAC4;
 
-  ul {
-    list-style: none;
-    display: inline;
+  .pc {
+
+    ul {
+      list-style: none;
+      display: inline;
+    }
+
+    ul.nav-item-bar li {
+      float: left;
+      padding: 10px;
+      margin: 0 15px;
+
+      a {
+        color: #ffffff;
+        font-size: 16px;
+      }
+    }
   }
 
-  ul.nav-item-bar li {
-    float: left;
-    padding: 10px;
-    margin: 0 15px;
+  .mobile {
 
-    a {
-      color: #ffffff;
-      font-size: 16px;
+    ul {
+      list-style: none;
+      display: block;
+    }
+
+    .icon button {
+      background: transparent;
+      border: none;
+      font-size: 28px;
+    }
+
+    ul.nav-item-bar {
+      position: absolute;
+      border: 1px solid #E0D6D6;
+      width: 100%;
+      left: 0;
+      top: 49px;
+      padding-left: 15px;
+      background: rgba(55, 186, 196, 0.12);
+
+      li {
+        padding: 5px;
+
+        :hover {
+          background: darkslategray;
+        }
+      }
     }
   }
 
   ul.nav-icon-bar li {
     float: left;
-    width: 10px;
-    height: 10px;
-    padding: 10px;
     margin: 10px;
     color: #ffffff;
-    border: 1px solid red;
+  }
+
+  .userInfo {
+    padding: 5px;
+    text-align: right;
+    padding-right: 15px;
+  }
+
+  .userInfo:hover {
+    cursor: pointer;
+    .opacity
+  }
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.opacity {
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  opacity: 0.5;
+}
+
+.pc-display {
+  @media only screen and (min-width: @gt_medium_screen) {
+    display: block;
+  }
+
+  @media only screen and (max-width: @le_medium_screen) {
+    display: none;
+  }
+}
+
+.mobile-display {
+  @media only screen and (max-width: @le_medium_screen) {
+    display: block;
+  }
+
+  @media only screen and (min-width: @gt_medium_screen) {
+    display: none;
   }
 }

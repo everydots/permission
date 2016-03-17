@@ -1,16 +1,27 @@
 <div class="nav" ng-controller="NavController">
-    <div class="col-lg-9">
+    <div class="pc pc-display col-xs-9">
         <ul class="nav-item-bar">
             <li ng-repeat="item in navItems">
                 <a ng-href="/#{{item.url}}">{{item.text}}</a>
             </li>
         </ul>
     </div>
-    <div class="col-lg-3">
-        <ul class="nav-icon-bar">
-            <li ng-repeat="icon in navIcons">
-                <img ng-title="{{icon.text}}" ng-src="{{icon.url}}"/>
-            </li>
-        </ul>
+    <div class="mobile mobile-display col-xs-9">
+        <div class="icon">
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#mobile-dropdown" aria-expanded="false">
+                ☰
+            </button>
+            <ul id="mobile-dropdown" class="nav-item-bar">
+                <li ng-repeat="item in navItems">
+                    <a ng-href="/#{{item.url}}">{{item.text}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="userInfo">
+            <img src="../images/user.png">
+        </div>
     </div>
 </div>
