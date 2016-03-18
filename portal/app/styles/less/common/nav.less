@@ -1,7 +1,7 @@
 .nav {
   width: 100%;
   min-height: 47px;
-  background: #37BAC4;
+  background: @main_background;
 
   .pc {
 
@@ -14,11 +14,23 @@
       float: left;
       padding: 10px;
       margin: 0 15px;
+      min-width: 100px;
+      text-align: center;
 
       a {
         color: #ffffff;
         font-size: 16px;
       }
+
+      a:hover {
+        cursor: inherit;
+        text-decoration: none;
+      }
+    }
+
+    ul.nav-item-bar li:hover {
+      border-bottom: 2px solid @main_color;
+      cursor: pointer;
     }
   }
 
@@ -36,19 +48,16 @@
     }
 
     ul.nav-item-bar {
-      position: absolute;
-      border: 1px solid #E0D6D6;
       width: 100%;
-      left: 0;
-      top: 49px;
-      padding-left: 15px;
       background: rgba(55, 186, 196, 0.12);
 
       li {
-        padding: 5px;
+        padding: 5px 0 5px;
+        margin-left: 10px;
 
         :hover {
-          background: darkslategray;
+          border-left: 2px solid @main_color;
+          cursor: pointer;
         }
       }
     }

@@ -7,12 +7,11 @@
         </ul>
     </div>
     <div class="mobile mobile-display col-xs-9">
-        <div class="icon">
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#mobile-dropdown" aria-expanded="false">
+        <div class="icon dropdown">
+            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                 ☰
             </button>
-            <ul id="mobile-dropdown" class="nav-item-bar">
+            <ul id="mobile-dropdown" class="nav-item-bar dropdown-menu">
                 <li ng-repeat="item in navItems">
                     <a ng-href="/#{{item.url}}">{{item.text}}</a>
                 </li>

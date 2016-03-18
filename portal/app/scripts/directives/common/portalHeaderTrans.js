@@ -1,8 +1,15 @@
 angular.module("portalApp")
-  .directive('portalHeaderTrans', function () {
-    return {
-      require: 'ngModel',
-      restrict: "A",
-      templateUrl: "../../../views/nav.html"
-    }
-  });
+    .directive('portalHeaderTrans', function () {
+        return {
+            restrict: "A",
+            link: function ($scope, $element) {
+                var button = $element.find(".dropdown button");
+                var dropdown = $element.find(".dropdown ul");
+                button.bind("click", function (event) {
+                    dropdown.slideToggle();
+                    event.stopPropagation();
+                })
+            },
+            templateUrl: "../../../views/nav.html"
+        }
+    });
