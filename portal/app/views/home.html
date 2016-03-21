@@ -1,4 +1,43 @@
 <div class="background">
-    <div class="description"></div>
-    <div class="container"></div>
+    <div class="description">
+        <div class="divCenter">
+            <span>Just do what you want!</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-login">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Email:</label>
+
+                    <div class="col-xs-9">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email"
+                               ng-model="user.username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label">Password:</label>
+
+                    <div class="col-xs-9">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password"
+                               ng-model="user.password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-xs-9">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-xs-9">
+                        <button type="submit" class="btn btn-default" ng-click="login()">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

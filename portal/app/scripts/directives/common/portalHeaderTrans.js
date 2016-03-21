@@ -10,6 +10,6 @@ angular.module("portalApp")
                     event.stopPropagation();
                 })
             },
-            templateUrl: "../../../views/nav.html"
+            templateUrl: "../../../views/common/nav.html"
         }
     });
