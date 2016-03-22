@@ -1,22 +1,110 @@
+@product_div_height: 320px;
+@login_form_width: 76%;
+
 .home {
   .background {
     background: #E4E2E2;
     position: relative;
     width: 100%;
-    min-height: 450px;
     background: url(../../images/background.jpg);
 
-    .description {
+    @media only screen and (min-width: @gt_medium_screen) {
+      min-height: 450px;
+    }
+
+    .description .divCenter {
+      font-size: 60px;
+      position: absolute;
+      color: #886363;
+      margin-left: 10%;
+      margin-top: 10%;
     }
 
     .container {
       border: 1px solid #C1BDA6;
       height: 300px;
-      width: 380px;
-      margin-top: 50px;
-      margin-right: 50px;
-      float: right;
       border-radius: 4px;
+
+      @media only screen and (max-width: @le_medium_screen) {
+        width: 100%;
+      }
+
+      @media only screen and (min-width: @gt_medium_screen) {
+        margin-top: 50px;
+        margin-right: 50px;
+        width: 380px;
+        float: right;
+      }
+    }
+  }
+
+  .products {
+    min-height: @product_div_height;
+    position: relative;
+    margin: auto;
+
+    .product {
+      background: #37BAC4;
+      color: #ffffff;
+
+      @media only screen and (min-width: @gt_medium_screen) {
+        .logo, .title, .desc {
+          text-align: center;
+        }
+        img {
+          width: 95px;
+          margin-top: 10px;
+        }
+      }
+
+      @media only screen and (max-width: @le_medium_screen) {
+        .logo {
+          float: left;
+          height: 100%;
+          width: 20%;
+        }
+
+        .title, .desc {
+          text-align: left;
+        }
+
+        .title{
+          margin: 5px;
+        }
+        
+        img{
+          width: 75px;
+          padding-top: 25px;
+          padding-right: 15px;
+        }
+      }
+
+      .title {
+        font-size: 30px;
+        margin: 10px;
+      }
+    }
+
+    @media only screen and (max-width: @le_medium_screen) {
+      width: 100%;
+
+      .product {
+        margin-top: 1px;
+        height: 120px;
+        width: 100%;
+      }
+
+    }
+
+    @media only screen and (min-width: @gt_medium_screen) {
+      width: 66%;
+      top: -50px;
+
+      .product {
+        height: @product_div_height;
+        margin-left: 5%;
+        width: 27%;
+      }
     }
   }
 
@@ -32,6 +120,36 @@
 
     form {
       margin-top: 20px;
+
+      label {
+        padding: 5px;
+      }
+
+      .form-group {
+
+        div.label {
+          width: 20%;
+          float: left;
+          color: #000000;
+          padding: 5px;
+        }
+
+        div.input {
+          width: @login_form_width;
+          float: left;
+        }
+
+        div.checkbox {
+          margin-left: 24%;
+        }
+        div.summit {
+          margin-left: 20%;
+        }
+
+        div.summit, div.checkbox {
+          width: @login_form_width;
+        }
+      }
     }
   }
 }
