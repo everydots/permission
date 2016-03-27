@@ -14,22 +14,23 @@ angular.module('portalApp')
 
         $scope.products = [
             {
-                name: "operator",
-                title: "My Title",
-                desc: "This area is 100% editable and can be used to promote your products and services.  " +
-                    "This area is 100% editable and can be used to promote your products and services."
+                name: "cloud",
+                title: "Cloud Computing",
+                desc: "In this module, it contains: <i>some</i> architecture and best practise about aws, ali-cloud." +
+                    "i also include some related articles and code projects.i will put everything related to cloud" +
+                    "in there."
             },
             {
-                name: "software",
-                title: "My Title",
-                desc: "This area is 100% editable and can be used to promote your products and services.  " +
-                    "This area is 100% editable and can be used to promote your products and services."
+                name: "bigdata",
+                title: "Big Data",
+                desc: "In this module, it contains some big data frameworks, such as hadoop, spark. i also put algorithms which" +
+                    "belongs to basic algorithm and big data algorithms in this module."
             },
             {
-                name: "calculator",
-                title: "My Title",
-                desc: "This area is 100% editable and can be used to promote your products and services.  " +
-                    "This area is 100% editable and can be used to promote your products and services."
+                name: "products",
+                title: "My Products",
+                desc: "In this module, it contains products that i have done in my free time, i will put the code and screenshot" +
+                    "in there to share with others if possible. also some products that i want to build."
             }
         ]
     });

@@ -10,8 +10,15 @@
 
     button {
       width: 100%;
-      background-color: rgba(55, 186, 196, 0.85);
+      background: rgba(55, 186, 196, 0.85);
       border: none;
+
+      .background-transition
+    }
+
+    button:hover {
+      background: #66D5DE;
+      cursor: pointer;
     }
 
     form {
@@ -92,7 +99,13 @@
 
     .product {
       background: #37BAC4;
+      border: 1px solid rgba(164, 167, 164, 0.74);
       color: #ffffff;
+      padding-left: 15px;
+      .background-transition
+      ul {
+        padding-left: 15px;
+      }
 
       @media only screen and (min-width: @gt_medium_screen) {
         .logo, .title, .desc {
@@ -101,6 +114,7 @@
 
         img {
           width: 95px;
+          height: 75px;
           margin-top: 10px;
         }
       }
@@ -131,6 +145,11 @@
         font-size: 30px;
         margin: 10px;
       }
+    }
+
+    .product:hover {
+      background: #66D5DE;
+      cursor: pointer;
     }
 
     @media only screen and (max-width: @le_medium_screen) {
@@ -175,6 +194,10 @@
       width: 48%;
       padding: 10px;
 
+      ul {
+        padding-left: 20px;
+      }
+
       p {
         text-align: left;
         color: rgb(102, 102, 102);
@@ -184,6 +207,23 @@
         font-family: 'Lato Light';
         margin: 20px 0;
       }
+
+      .container-fluid {
+        padding-left: 5px;
+      }
+
+      .container-fluid .col-xs-3 {
+        height: 100px;
+        border: 1px solid rgba(128, 128, 128, 0.84);
+        border-radius: 4px;
+        width: 27%;
+        margin-right: 3%;
+      }
+
+      .productName {
+        text-align: center;
+      }
+
     }
   }
 

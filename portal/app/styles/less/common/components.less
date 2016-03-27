@@ -3,11 +3,7 @@
   color: #ffffff;
   background: #FFB530;
   border: none;
-
-  transition: background 0.5s;
-  -moz-transition: background 0.5s; /* Firefox 4 */
-  -webkit-transition: background 0.5s; /* Safari 和 Chrome */
-  -o-transition: background 0.5s; /* Opera */
+  .background-transition
 }
 
 .ed-btn:hover {
@@ -23,4 +19,31 @@
   font-size: 14px;
   font-family: 'Lato Light';
 }
+
+.background-transition {
+  transition: background 0.5s;
+  -moz-transition: background 0.5s; /* Firefox 4 */
+  -webkit-transition: background 0.5s; /* Safari 和 Chrome */
+  -o-transition: background 0.5s; /* Opera */
+}
+
+.myProducts {
+  .permission {
+    background: url(../../images/permission.png) no-repeat;
+  }
+
+  .reminder {
+    background: url(../../images/reminder.png) no-repeat;
+  }
+
+  .analysis {
+    background: url(../../images/analysis.png) no-repeat;
+  }
+
+  .permission, .reminder, .analysis {
+    height: 75px;
+  }
+}
+
+
 

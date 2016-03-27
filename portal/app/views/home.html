@@ -42,36 +42,107 @@
     </div>
 </div>
 <div class="products">
-    <div class="product col-xs-3" ng-repeat="product in products">
+    <div class="product col-xs-3">
         <div class="logo">
-            <img ng-src="../images/{{product.name}}.png"/>
+            <img ng-src="../images/cloud.png"/>
         </div>
         <div>
             <div class="title">
-                {{product.title}}
+                Cloud Computing
             </div>
             <div class="detail">
-                {{product.desc}}
+                In this module, it contains:
+                <ul>
+                    <li>AWS Services analysis</li>
+                    <li>Typical architecture scenarios based on AWS</li>
+                    <li>Cloud best practise</li>
+                    <li>Cloud related projects and practise</li>
+                </ul>
             </div>
         </div>
     </div>
+    <div class="product col-xs-3">
+        <div class="logo">
+            <img ng-src="../images/bigdata.png"/>
+        </div>
+        <div>
+            <div class="title">
+                Big Data
+            </div>
+            <div class="detail">
+                In this module, it contains:
+                <ul>
+                    <li>Hadoop analysis.</li>
+                    <li>Basic algorithms articles and code samples</li>
+                    <li>Big Data algorithms</li>
+                    <li>Big data in cloud</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="product col-xs-3">
+        <div class="logo">
+            <img ng-src="../images/products.png"/>
+        </div>
+        <div>
+            <div class="title">
+                My Products
+            </div>
+            <div class="detail">
+                In this module, it contains:
+                <ul>
+                    <li>My Products</li>
+                    <li>My Lab practise, include code and ux graphics</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
 </div>
 <div class="desc col-xs-10">
     <div class="shortDesc">
-        <h1>Add Your Title Here</h1>
+        <h1>New updates here</h1>
 
-        <h2>Your Sub-Title</h2>
+        <div class="cloudCompute">
+            <h4>Cloud Computing</h4>
+            <ul>
+                <li><a href="#">How to use AWS SDK in mac.</a></li>
+                <li><a href="#">Use ec2 SDK to create instance.</a></li>
+                <li><a href="#">Use SDK to finish elb configure and testing.</a></li>
+                <li><a href="#">Use S3 to store uploaded data.</a></li>
+            </ul>
+        </div>
 
-        <p>Your homepage should be the first page that visitors to your site see, so make sure you give a concise
-            overview of who you are, what you do and why you are right for them. Your homepage should be the first page
-            that visitors to your site see,
-            so make sure you give a concise overview of who you are, what you do and why you are right for them.</p>
+        <div class="bigData">
+            <h4>Big Data</h4>
+            <ul>
+                <li><a href="#">Basic Algorithms</a></li>
+                <li><a href="#">Hadoop and Hadoop echo systems.</a></li>
+                <li><a href="#">Ansible & DevOps brief insight.</a></li>
+                <li><a href="#">Big data algorithms</a></li>
+                <li><a href="#">Big data code projects.</a></li>
+            </ul>
+        </div>
 
-        <p>Your homepage should be the first page that visitors to your site see, so make sure you give a concise
-            overview of who you are, what you do and why you are right for them. Your homepage should be the first page
-            that visitors to your site see,
-            so make sure you give a concise overview of who you are, what you do and why you are right for them.</p>
-        <button class="btn btn-default btn-warning">Read more</button>
+        <div class="myProducts">
+            <h4>My Products</h4>
+
+            <div class="container-fluid">
+                <div class="col-xs-3">
+                    <div class="permission"></div>
+                    <div class="productName">Permission</div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="reminder"></div>
+                    <div class="productName">Reminder</div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="analysis"></div>
+                    <div class="productName">Analysis</div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="picture"></div>
 </div>
