@@ -98,12 +98,13 @@
     margin: auto;
 
     .product {
-      background: #37BAC4;
+      background: transparent;
       border: 1px solid rgba(164, 167, 164, 0.74);
-      color: #ffffff;
+      color: #000000;
       padding-left: 15px;
+      border-radius: 4px;
       .background-transition
-      ul {
+      ul li {
         padding-left: 15px;
       }
 
@@ -148,7 +149,7 @@
     }
 
     .product:hover {
-      background: #66D5DE;
+      background: #FFB530;
       cursor: pointer;
     }
 
@@ -186,8 +187,9 @@
 
     .picture {
       width: 52%;
-      background: url(../../images/desc_picture.jpg);
+      background: url(../../images/bigdata_background.jpeg) no-repeat center;
       min-height: 500px;
+      background-size: 100%;
     }
 
     .shortDesc {
@@ -214,10 +216,16 @@
 
       .container-fluid .col-xs-3 {
         height: 100px;
-        border: 1px solid rgba(128, 128, 128, 0.84);
         border-radius: 4px;
         width: 27%;
         margin-right: 3%;
+        border: 1px solid darkgray;
+        border-radius: 4px;
+      }
+
+      .container-fluid .col-xs-3:hover {
+        cursor: pointer;
+        background: #FFB530;
       }
 
       .productName {
@@ -230,7 +238,7 @@
   .sentence {
     width: 60%;
     margin: auto;
-    min-height: 300px;
+    min-height: 220px;
 
     .start {
       font-size: 45px;
@@ -263,9 +271,16 @@
       width: 48%;
       float: left;
 
-      .picture {
-        background: url(../../images/service_pic.jpg);
+      .picture.awsCost {
+        background: url(../../images/aws_cost.png) no-repeat center;
         height: 350px;
+        background-size: 300px;
+      }
+
+      .picture.openSdk {
+        background: url(../../images/opensdk.png) no-repeat center;
+        height: 350px;
+        background-size: 300px;
       }
 
       .title {
