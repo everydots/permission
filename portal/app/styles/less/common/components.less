@@ -46,9 +46,18 @@
   }
 }
 
-ul{
+ul {
   padding-left: 15px;
 }
 
+.ed-width(@width) {
+  @media only screen and (max-width: @le_medium_screen) {
+    width: 100%;
+  }
+
+  @media only screen and (min-width: @gt_medium_screen) {
+    width: @width;
+  }
+}
 
 
