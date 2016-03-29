@@ -29,7 +29,7 @@
 
     <servlet-mapping>
         <servlet-name>springMVC</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
 
@@ -40,6 +40,6 @@
 
     <filter-mapping>
         <filter-name>corsFilter</filter-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/rest/*</url-pattern>
     </filter-mapping>
 </web-app>
