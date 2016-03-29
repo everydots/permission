@@ -2,7 +2,7 @@
     <div class="pc pc-display col-xs-9">
         <ul class="nav-item-bar">
             <li ng-repeat="item in navItems">
-                <a ng-href="/#{{item.url}}">{{item.text}}</a>
+                <a ui-sref="{{item.state}}">{{item.text}}</a>
             </li>
         </ul>
     </div>

@@ -13,6 +13,7 @@
         <module>permission-ui</module>
         <module>permission-rest-services</module>
         <module>portal</module>
+        <module>portal-rest-services</module>
     </modules>
 
 

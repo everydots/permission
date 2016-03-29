@@ -8,23 +8,13 @@
  *
  * Main module of the application.
  */
-angular
+var portalApp = angular
     .module('portalApp', [
         'ngAnimate',
         'ngCookies',
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
-    ])
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when('/home', {
-                templateUrl: 'views/home.html',
-                controller: 'HomeCtrl',
-                controllerAs: 'home'
-            })
-            .otherwise({
-                redirectTo: '/views/home.html'
-            });
-    });
+        'ngTouch',
+        'ui.router'
+    ]);

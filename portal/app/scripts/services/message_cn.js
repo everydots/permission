@@ -1,11 +1,11 @@
 angular.module("portalApp")
     .value("messageCN", {
         nav_items: [
-            {text: "Home", url: "home"},
-            {text: "Products", url: "products"},
-            {text: "Lab", url: "lab"},
-            {text: "Articles", url: "articles"},
-            {text: "About me", url: "about"}
+            {text: "Home", state: "home"},
+            {text: "Products", state: "products"},
+            {text: "Lab", state: "lab"},
+            {text: "Articles", state: "articles"},
+            {text: "About me", state: "about"}
         ],
         nav_icons: [
             {name: "QQ", title: "qq", src: "../images/qq.png"},
