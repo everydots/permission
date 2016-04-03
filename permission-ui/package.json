@@ -5,8 +5,8 @@
     "angular-mocks": "^1.4.3",
     "grunt": "^0.4.5",
     "express": "^4.13.3",
-    "grunt-autoprefixer":"^3.0.3",
-    "grunt-bower-task":"^0.4.0",
+    "grunt-autoprefixer": "^3.0.3",
+    "grunt-bower-task": "^0.4.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-compass": "^1.0.0",
     "grunt-contrib-concat": "^0.5.0",
@@ -33,5 +33,11 @@
   },
   "scripts": {
     "test": "grunt test"
+  },
+  "dependencies": {
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-express-server": "^0.5.2",
+    "karma": "^0.13.22"
   }
 }
