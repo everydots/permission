@@ -1,3 +1,4 @@
+var path = require('path');
 module.exports = function (grunt) {
 
     // Project configuration.
@@ -26,8 +27,12 @@ module.exports = function (grunt) {
         },
         // Test settings
         karma: {
+            options: {
+                // point all tasks to karma config file
+                configFile: 'karma.conf.js'
+            },
             unit: {
-                configFile: 'karma.conf.js',
+                // run tests once instead of continuously
                 singleRun: true
             }
         },
@@ -45,26 +50,35 @@ module.exports = function (grunt) {
         //start express server and run server.js
         express: {
             options: {
-                // Override defaults here
-                bases:'/',
-                port: 9000
+                port: 9000,
+                hostname: 'localhost'
             },
-            dev: {
+            livereload: {
                 options: {
-                    script: 'server.js'
+                    server: path.resolve('./server.js'),
+                    livereload: true,
+                    serverreload: true,
+                    bases: [path.resolve('./app'), path.resolve('./bower_components')]
                 }
             }
+            /*dev: {
+             options: {
+             script: 'server.js'
+             }
+             }*/
         }
     });
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-express-server');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-express');
+    grunt.loadNpmTasks('grunt-karma');
 
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'jshint']);
-    grunt.registerTask('server', ['express', 'watch']);
+    grunt.registerTask('server', ['express', 'express-keepalive']);
+    grunt.registerTask('ut', ['karma:unit']);
 
 };
