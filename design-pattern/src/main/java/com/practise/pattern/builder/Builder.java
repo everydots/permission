@@ -2,11 +2,11 @@ package com.practise.pattern.builder;
 
 public interface Builder {
 
-    public void buildPartA();
+    public Builder buildPartA();
 
-    public void buildPartB();
+    public Builder buildPartB();
 
-    public void buildPartC();
+    public Builder buildPartC();
 
-     Product getResult();
+    Product getResult();
 }
