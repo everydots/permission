@@ -9,7 +9,9 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "angular-mocks": "^1.4.0"
+    "angular-mocks": "^1.4.0",
+    "jquery": "^2.2.2",
+    "bootstrap": "^3.3.6"
   },
   "appPath": "app",
   "moduleName": "portalApp",

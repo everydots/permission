@@ -14,6 +14,8 @@
         <module>permission-rest-services</module>
         <module>portal</module>
         <module>portal-rest-services</module>
+        <module>design-pattern</module>
+        <module>permission-test</module>
     </modules>
 
 
