@@ -16,6 +16,7 @@
         <module>portal-rest-services</module>
         <module>design-pattern</module>
         <module>permission-test</module>
+        <module>thirdpart-aws-core</module>
     </modules>
 
 
