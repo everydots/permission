@@ -16,7 +16,7 @@ module.exports = function (grunt) {
             }
         },
         useminPrepare: {
-            html: 'app/index.html',
+            html: ['app/index.html', 'app/home.html'],
             options: {
                 dest: 'app/dist',
                 flow: {
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
             }
         },
         usemin: {
-            html: ['app/index.html'],
+            html: ['app/*.html'],
             js: ['app/dist/{,*/}*.js'],
             options: {
                 blockReplacements: {
@@ -73,6 +73,6 @@ module.exports = function (grunt) {
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'jshint']);
     grunt.registerTask('e2e', ['protractor:e2e']);
-    grunt.registerTask('minify', ['useminPrepare', 'concat:generated', 'uglify:generated']);
+    grunt.registerTask('minify', ['useminPrepare', 'concat:generated', 'uglify:generated','usemin']);
 
 };
