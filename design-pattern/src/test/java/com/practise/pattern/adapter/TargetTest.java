@@ -11,6 +11,7 @@ public class TargetTest {
     private Target target;
     private Target2 target2;
 
+    /* Object adapter pattern -- use reference to implement */
     @Test
     public void shouldInvokeTargetMethod() throws Exception {
 
@@ -21,7 +22,6 @@ public class TargetTest {
 
 
     //now requirement change, we need to invoke a new class
-
     @Test
     public void shouldInvokeNewTargetMethod() throws Exception {
 
@@ -31,6 +31,7 @@ public class TargetTest {
 
     }
 
+    /*Class adapter pattern -- use inheritance to implement*/
     @Test
     public void shouldInvokeTarget2Method() throws Exception {
         target2 = new RealTarget2();
@@ -40,7 +41,6 @@ public class TargetTest {
 
 
     //now requirement change, we need to invoke a new class
-
     @Test
     public void shouldInvokeNewTarget2Method() throws Exception {
         target2 = new Adapter2();
