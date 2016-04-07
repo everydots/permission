@@ -15,6 +15,20 @@ module.exports = function (grunt) {
                 }
             }
         },
+        uglify: {
+            options: {
+                compress: true,
+                mangle: true,
+                mangleProperties: true,
+                reserveDOMCache: true
+            }
+        },
+        clean: {
+            /*options: {
+             force: true
+             },*/
+            src: ['.tmp/**']
+        },
         useminPrepare: {
             html: ['app/index.html', 'app/home.html'],
             options: {
@@ -24,7 +38,6 @@ module.exports = function (grunt) {
                         steps: {
                             js: ['concat', 'uglify']
                         },
-                        post: {}
                     }
                 }
             }
@@ -67,12 +80,15 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadNpmTasks('grunt-usemin');
 
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'jshint']);
     grunt.registerTask('e2e', ['protractor:e2e']);
-    grunt.registerTask('minify', ['useminPrepare', 'concat:generated', 'uglify:generated','usemin']);
+    grunt.registerTask('minify', ['useminPrepare', 'concat:generated', 'uglify:generated', 'usemin', 'clean']);
+    grunt.registerTask('min', ['uglify:generated']);
 
+    //grunt.registerTask('minifyClean', ['clean']);
 };
