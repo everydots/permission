@@ -11,4 +11,13 @@ public class Constants {
     public static final String FLYWEIGHT_TEXT = "fly weight text";
 
     public static final String FLYWEIGHT_UNSHARE_TEXT = "fly weight unshare text";
+
+    public static final String FACATE_OPERATEA = "facade operate a";
+    public static final String FACATE_OPERATEB = "facade operate b";
+    public static final String FACATE_OPERATEC = "facade operate c";
+
+    public static final String PROXY_TEXT = "proxy text"
+            ;
+    public static final String PROXY_PRE_REQUEST = "proxy pre request text";
+    public static final String PROXY_POST_REQUEST = "proxy post request text";
 }
