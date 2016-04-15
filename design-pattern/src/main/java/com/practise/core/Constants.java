@@ -20,4 +20,6 @@ public class Constants {
             ;
     public static final String PROXY_PRE_REQUEST = "proxy pre request text";
     public static final String PROXY_POST_REQUEST = "proxy post request text";
+    public static final String COMMAND_TEXT = "command text";
+    public static final String COMMAND_RECIVER_TEXT = "command receiver text";
 }
