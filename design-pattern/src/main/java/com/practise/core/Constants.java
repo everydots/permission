@@ -7,4 +7,8 @@ public class Constants {
     public static final String DECORATOR_TEXT = "decorator text";
     public static final String DECORATOR_ADD_BEHAVIOR1 = "decorator add behavior1";
     public static final String DECORATOR_ADD_BEHAVIOR2 = "decorator add behavior2";
+
+    public static final String FLYWEIGHT_TEXT = "fly weight text";
+
+    public static final String FLYWEIGHT_UNSHARE_TEXT = "fly weight unshare text";
 }
