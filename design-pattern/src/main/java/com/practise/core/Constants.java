@@ -16,10 +16,19 @@ public class Constants {
     public static final String FACATE_OPERATEB = "facade operate b";
     public static final String FACATE_OPERATEC = "facade operate c";
 
-    public static final String PROXY_TEXT = "proxy text"
-            ;
+    public static final String PROXY_TEXT = "proxy text";
     public static final String PROXY_PRE_REQUEST = "proxy pre request text";
     public static final String PROXY_POST_REQUEST = "proxy post request text";
     public static final String COMMAND_TEXT = "command text";
     public static final String COMMAND_RECIVER_TEXT = "command receiver text";
+
+    public static final String OBSERVER_UPDATE_TEXTA = "observer update text a";
+    public static final String OBSERVER_UPDATE_TEXTB = "observer update text b";
+
+
+    public static final String STATE_TEXT_A = "state text a";
+    public static final String STATE_TEXT_B ="state text b" ;
+
+    public static final String STRATEGY_TEXT_A = "strategy text a";
+    public static final String STRATEGY_TEXT_B = "strategy text b";
 }
