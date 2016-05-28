@@ -1,5 +1,6 @@
 package com.practise.pattern.proxy;
 
+import com.practise.annotations.Bean;
 import com.practise.core.Constants;
 import org.junit.Test;
 
@@ -9,6 +10,9 @@ import static org.junit.Assert.assertThat;
 public class ProxyTest {
 
     private Proxy proxy = new Proxy(new RealSubject());
+
+    @Bean
+    private Subject subject;
 
     @Test
     public void shouldInvokePreRequestAndPostRequest() throws Exception {
