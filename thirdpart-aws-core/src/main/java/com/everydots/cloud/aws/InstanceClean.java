@@ -51,7 +51,6 @@ public class InstanceClean {
         RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
         runInstancesRequest.getInstanceType();
         getAmazonEC2Client().runInstances(runInstancesRequest);
-
     }
 
 
