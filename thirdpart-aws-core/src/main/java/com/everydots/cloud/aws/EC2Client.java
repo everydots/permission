@@ -108,12 +108,7 @@ public class EC2Client {
     }
 
     public String getSecurityGroup(String securityGroupName) {
-        try {
-            List<String> strings = describeSecurityGroup(securityGroupName);
-            return strings.get(0);
-        } catch (AmazonServiceException e) {
-            return createNewSecurityGroup(securityGroupName).getGroupId();
-        }
+        return describeSecurityGroup(securityGroupName).get(0);
     }
 
     public List<String> describeSecurityGroup(final String securityGroupName) {
