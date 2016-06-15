@@ -1,18 +1,28 @@
 package com.everydots.cloud.aws;
 
 import com.amazonaws.auth.ClasspathPropertiesFileCredentialsProvider;
-import com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancing;
+import com.amazonaws.regions.Region;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.elasticloadbalancing.AmazonElasticLoadBalancingClient;
-import com.amazonaws.services.elasticloadbalancing.model.CreateLoadBalancerRequest;
-import com.amazonaws.services.elasticloadbalancing.model.Listener;
+import com.amazonaws.services.elasticloadbalancing.model.*;
 
 public class ELBClient {
 
-    public static final String LOAD_BALANCER_NAME = "LOAD_BALANCER_NAME";
+    public static final String LOAD_BALANCER_NAME = "demoLoadBalancer";
+    public static final String WEBSERVER = "webserver";
 
-    public void createLoadBalancer() {
-        AmazonElasticLoadBalancing elasticLoadBalancing =
-                new AmazonElasticLoadBalancingClient(new ClasspathPropertiesFileCredentialsProvider());
+    public static AmazonElasticLoadBalancingClient instance = null;
+
+    public AmazonElasticLoadBalancingClient getAmazonELBClient() {
+        if (instance == null) {
+            instance = new AmazonElasticLoadBalancingClient(new ClasspathPropertiesFileCredentialsProvider());
+            instance.setRegion(Region.getRegion(Regions.US_EAST_1));
+        }
+        return instance;
+    }
+
+    public String createLoadBalancer() {
+        EC2Client ec2Client = new EC2Client();
         CreateLoadBalancerRequest createLoadBalancerRequest =
                 new CreateLoadBalancerRequest()
                         .withLoadBalancerName(LOAD_BALANCER_NAME)
@@ -21,8 +31,19 @@ public class ELBClient {
                                 .withInstanceProtocol("HTTP")
                                 .withInstancePort(8080)
                                 .withLoadBalancerPort(8080))
-                        .withSubnets()
-                        .withSecurityGroups("sg-5faa3f3b");
-        elasticLoadBalancing.createLoadBalancer(createLoadBalancerRequest);
+                        .withSubnets(ec2Client.describeDefaultSubnetIds())
+                        .withSecurityGroups(ec2Client.getSecurityGroup(WEBSERVER));
+        CreateLoadBalancerResult loadBalancer = getAmazonELBClient()
+                .createLoadBalancer(createLoadBalancerRequest);
+        return loadBalancer.getDNSName();
+    }
+
+
+    public String destroyLoadBalancer() {
+        DeleteLoadBalancerRequest deleteLoadBalancerRequest = new DeleteLoadBalancerRequest()
+                .withLoadBalancerName(LOAD_BALANCER_NAME);
+        DeleteLoadBalancerResult deleteLoadBalancerResult =
+                getAmazonELBClient().deleteLoadBalancer(deleteLoadBalancerRequest);
+        return deleteLoadBalancerResult.toString();
     }
 }

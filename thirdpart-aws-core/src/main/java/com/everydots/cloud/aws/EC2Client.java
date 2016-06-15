@@ -1,10 +1,5 @@
 package com.everydots.cloud.aws;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.ClasspathPropertiesFileCredentialsProvider;
 import com.amazonaws.regions.Region;
@@ -21,6 +16,10 @@ import com.google.common.base.Predicate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.google.common.collect.FluentIterable.from;
 
@@ -74,7 +73,7 @@ public class EC2Client {
         RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
         runInstancesRequest.setInstanceType(InstanceType.T2Micro);
         runInstancesRequest.setImageId(ImageType.Ubuntu_Virgnia.getImageId());
-        runInstancesRequest.setSecurityGroupIds(getSecurityGroup(Constants.SECURITY_GROUP_NAME));
+        runInstancesRequest.setSecurityGroupIds(describeSecurityGroup(Constants.SECURITY_GROUP_NAME));
         runInstancesRequest.setKeyName(getKeyPairName());
         runInstancesRequest.setMaxCount(Constants.INSTANCE_COUNT);
         runInstancesRequest.setMinCount(1);
@@ -108,7 +107,16 @@ public class EC2Client {
         return describeDefaultSubnet().getSubnetId();
     }
 
-    private Collection<String> getSecurityGroup(final String securityGroupName) {
+    public String getSecurityGroup(String securityGroupName) {
+        try {
+            List<String> strings = describeSecurityGroup(securityGroupName);
+            return strings.get(0);
+        } catch (AmazonServiceException e) {
+            return createNewSecurityGroup(securityGroupName).getGroupId();
+        }
+    }
+
+    public List<String> describeSecurityGroup(final String securityGroupName) {
         String groupId;
         List<SecurityGroup> securityGroups = securityGroupExist(securityGroupName);
         if (CollectionUtils.isEmpty(securityGroups)) {
@@ -168,6 +176,14 @@ public class EC2Client {
         return describeSubnetsResult.getSubnets().get(0);
     }
 
+    private List<Subnet> describeDefaultSubnets() {
+        DescribeSubnetsResult describeSubnetsResult = getAmazonEC2Client().describeSubnets(new DescribeSubnetsRequest()
+                .withFilters(new Filter()
+                        .withName("vpc-id")
+                        .withValues(getDefaultVpcId())));
+        return describeSubnetsResult.getSubnets();
+    }
+
     private List<SecurityGroup> securityGroupExist(String securityGroupName) {
         try {
             return getAmazonEC2Client()
@@ -182,4 +198,13 @@ public class EC2Client {
         }
     }
 
+    public List<String> describeDefaultSubnetIds() {
+        List<Subnet> subnets = describeDefaultSubnets();
+        return from(subnets).toMap(new Function<Subnet, String>() {
+            @Override
+            public String apply(Subnet subnet) {
+                return subnet.getSubnetId();
+            }
+        }).values().asList();
+    }
 }
