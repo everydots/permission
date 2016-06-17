@@ -1,2 +1,3 @@
 # permission
 permission project
+* hello
