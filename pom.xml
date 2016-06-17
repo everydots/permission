@@ -17,6 +17,8 @@
         <module>design-pattern</module>
         <module>permission-test</module>
         <module>thirdpart-aws-core</module>
+        <module>stock-web</module>
+        <module>stock-analysis</module>
     </modules>
 
 

@@ -23,6 +23,7 @@ public class ELBClient {
 
     public String createLoadBalancer() {
         EC2Client ec2Client = new EC2Client();
+
         CreateLoadBalancerRequest createLoadBalancerRequest =
                 new CreateLoadBalancerRequest()
                         .withLoadBalancerName(LOAD_BALANCER_NAME)
