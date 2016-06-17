@@ -1,33 +1,23 @@
 package com.everydots.cost.controller;
 
 import com.everydots.cost.beans.User;
-import com.everydots.cost.utils.MapperUtil;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 @Controller
-@RequestMapping("/cost/analysis")
+@RequestMapping("/analysis")
 public class CostAnalysisController {
 
-    @RequestMapping(value = "service.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/services", method = RequestMethod.GET)
     public
     @ResponseBody
-    Object login(@RequestBody String content) throws Exception{
-        User user = MapperUtil.mapAsUser(content);
+    Object login() throws Exception {
+        User user = new User();
         user.setUsername("serverUser");
         user.setPassword("1111");
         return new ObjectMapper().writer().writeValueAsString(user);
-    }
-
-    @RequestMapping("test.do")
-    public void test(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("success cros!!");
     }
 }
