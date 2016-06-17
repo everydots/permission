@@ -18,5 +18,4 @@ angular.module('costAnalysisApp')
     $scope.onClick = function (points, evt) {
       console.log(points, evt);
     };
-
   });
