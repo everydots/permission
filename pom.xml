@@ -19,6 +19,7 @@
         <module>thirdpart-aws-core</module>
         <module>stock-web</module>
         <module>stock-analysis</module>
+        <module>stock-web-rest-services</module>
     </modules>
 
 
