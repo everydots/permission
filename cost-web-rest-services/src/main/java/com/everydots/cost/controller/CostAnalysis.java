@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/analysis")
-public class CostAnalysisController {
+public class CostAnalysis {
 
     @RequestMapping(value = "/services", method = RequestMethod.GET)
     public
