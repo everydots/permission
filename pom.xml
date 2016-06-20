@@ -16,10 +16,10 @@
         <module>portal-rest-services</module>
         <module>design-pattern</module>
         <module>permission-test</module>
-        <module>thirdpart-aws-core</module>
-        <module>stock-web</module>
-        <module>stock-analysis</module>
-        <module>stock-web-rest-services</module>
+        <module>cloud-base</module>
+        <module>cost-web-ui</module>
+        <module>cost-analysis</module>
+        <module>cost-web-rest-services</module>
     </modules>
 
 
@@ -69,6 +69,11 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>

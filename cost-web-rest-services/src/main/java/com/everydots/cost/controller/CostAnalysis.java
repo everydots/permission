@@ -20,4 +20,5 @@ public class CostAnalysis {
         user.setPassword("1111");
         return new ObjectMapper().writer().writeValueAsString(user);
     }
+
 }

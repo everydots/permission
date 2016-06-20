@@ -30,6 +30,7 @@ public class EC2Client {
 
     public static final String CREDENTIAL_PROFILE = "awsCredentials.properties";
     public static final Log LOGGER = LogFactory.getLog(EC2Client.class);
+    public static final String DEFAULT_VPC_SECURITY_GROUP = "webserver";
 
     private AmazonEC2 instance = null;
 
