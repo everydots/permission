@@ -1,6 +1,6 @@
 package com.everydots.cost.service;
 
-import com.everydots.cost.beans.CostItem;
+import com.everydots.cost.beans.CostRecord;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ public interface CostService {
 
     String insertMockRecords();
 
-    String insertCost(CostItem costItem);
+    String insertCost(CostRecord costRecord);
 
-    List<CostItem> retrieveCosts();
+    List<CostRecord> retrieveCosts();
 
-    String updateCost(CostItem costItem);
+    String updateCost(CostRecord costRecord);
 
-    String insertCosts(List<CostItem> costItems);
+    String insertCosts(List<CostRecord> costRecords);
 }
