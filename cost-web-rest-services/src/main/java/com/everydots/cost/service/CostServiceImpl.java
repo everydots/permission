@@ -1,14 +1,18 @@
 package com.everydots.cost.service;
 
-import com.everydots.cost.beans.CostRecord;
-import com.everydots.cost.dao.CostDao;
-import org.apache.commons.lang.math.RandomUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import com.everydots.cost.beans.CostRecord;
+import com.everydots.cost.dao.CostDao;
+import org.apache.commons.lang.math.RandomUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class CostServiceImpl implements CostService {
 
+    @Autowired
     private CostDao costDao;
 
     private String[] service_names = {"EC2", "S3", "RDS", "Kinesis"};
@@ -35,9 +39,7 @@ public class CostServiceImpl implements CostService {
 
     @Override
     public String insertCosts(List<CostRecord> costRecords) {
-
-
-        return null;
+        return costDao.insertRecords(costRecords);
     }
 
     private List<CostRecord> mockCostRecords(int length) {
