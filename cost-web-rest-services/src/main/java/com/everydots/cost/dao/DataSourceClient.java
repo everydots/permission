@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Properties;
 
 @Service
@@ -40,8 +39,8 @@ public class DataSourceClient {
             while (resultSet.next()) {
                 return true;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            return false;
         }
         return false;
     }

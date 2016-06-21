@@ -12,6 +12,7 @@ import com.amazonaws.services.rds.model.DescribeDBInstancesResult;
 public class RDSClient {
 
     public static final String DB_NAME = "demo";
+    public static final String DB_NAME_ID = "demodb";
     private static final String DB_INSTANCE_TYPE = "db.t2.micro";
     private static final String DB_ENGINE = "MySQL";
     public static final String MASTER_USERNAME = "root";
@@ -31,9 +32,10 @@ public class RDSClient {
         EC2Client ec2Client = new EC2Client();
         CreateDBInstanceRequest dbInstanceRequest =
                 new CreateDBInstanceRequest()
+                        .withDBName(DB_NAME)
                         .withDBInstanceClass(DB_INSTANCE_TYPE)
                         .withEngine(DB_ENGINE)
-                        .withDBInstanceIdentifier(DB_NAME)
+                        .withDBInstanceIdentifier(DB_NAME_ID)
                         .withMasterUsername(MASTER_USERNAME)
                         .withMasterUserPassword(MASTER_PASSWORD)
                         .withAllocatedStorage(5)
@@ -47,7 +49,7 @@ public class RDSClient {
     public DBInstance describeRDSInstance() {
         DescribeDBInstancesRequest describeDBInstancesRequest =
                 new DescribeDBInstancesRequest()
-                        .withDBInstanceIdentifier(DB_NAME);
+                        .withDBInstanceIdentifier(DB_NAME_ID);
         try {
             DescribeDBInstancesResult describeDBInstancesResult =
                     getRDSClient().describeDBInstances(describeDBInstancesRequest);
