@@ -8,8 +8,6 @@ public class CostRecord extends Record{
 
     private double cost;
 
-
-
     public String getService_name() {
         return service_name;
     }

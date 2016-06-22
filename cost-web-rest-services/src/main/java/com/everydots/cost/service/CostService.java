@@ -3,6 +3,7 @@ package com.everydots.cost.service;
 import com.everydots.cost.beans.CostRecord;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CostService {
 
@@ -10,7 +11,7 @@ public interface CostService {
 
     String insertCost(CostRecord costRecord);
 
-    List<CostRecord> retrieveCosts();
+    List<Map<String, Object>> statisticRecords();
 
     String updateCost(CostRecord costRecord);
 

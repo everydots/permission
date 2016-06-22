@@ -2,6 +2,7 @@ package com.everydots.cost.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.everydots.cost.beans.CostRecord;
 import com.everydots.cost.dao.CostDao;
@@ -24,17 +25,17 @@ public class CostServiceImpl implements CostService {
 
     @Override
     public String insertCost(CostRecord costRecord) {
-        return null;
+        return costDao.insertRecord(costRecord);
     }
 
     @Override
-    public List<CostRecord> retrieveCosts() {
-        return null;
+    public List<Map<String, Object>> statisticRecords() {
+        return costDao.statisticRecords();
     }
 
     @Override
     public String updateCost(CostRecord costRecord) {
-        return null;
+        return costDao.updateRecord(costRecord);
     }
 
     @Override

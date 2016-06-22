@@ -36,5 +36,12 @@ public class CostAnalysis {
         return costService.insertMockRecords();
     }
 
+    @RequestMapping(value = "/statistic", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Object statistic() throws Exception {
+        return costService.statisticRecords();
+    }
+
 
 }

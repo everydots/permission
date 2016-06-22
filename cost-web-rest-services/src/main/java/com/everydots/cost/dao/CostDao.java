@@ -1,8 +1,9 @@
 package com.everydots.cost.dao;
 
-import com.everydots.cost.beans.CostRecord;
-
 import java.util.List;
+import java.util.Map;
+
+import com.everydots.cost.beans.CostRecord;
 
 public interface CostDao {
 
@@ -10,7 +11,9 @@ public interface CostDao {
 
     String insertRecord(CostRecord record);
 
-    CostRecord updateRecord(CostRecord record);
+    String updateRecord(CostRecord record);
 
     List<CostRecord> retrieveRecords(CostRecord record);
+
+    List<Map<String, Object>> statisticRecords();
 }
