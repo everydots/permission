@@ -13,18 +13,20 @@ angular.module('costAnalysisApp')
     $scope.data = [];
     $scope.series = ["Service Cost"];
 
-    $http
-      .get(Constants.service_urls.service_cost_statistic)
-      .then(function (content) {
-        if (content.status == 200 && angular.isArray(content.data)) {
-          var dataArray = [];
-          content.data.forEach(function (item) {
-            $scope.labels.push(item.service_name);
-            dataArray.push(item.cost);
-          });
-          $scope.data.push(dataArray);
-        }
-      });
+    if (!$scope.labels.length) {
+      $http
+        .get(Constants.service_urls.service_cost_statistic)
+        .then(function (content) {
+          if (content.status == 200 && angular.isArray(content.data)) {
+            var dataArray = [];
+            content.data.forEach(function (item) {
+              $scope.labels.push(item.service_name);
+              dataArray.push(item.cost);
+            });
+            $scope.data.push(dataArray);
+          }
+        });
+    }
 
 
   });
