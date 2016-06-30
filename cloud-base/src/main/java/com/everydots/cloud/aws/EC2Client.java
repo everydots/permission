@@ -36,9 +36,10 @@ public class EC2Client {
     public static final Log LOGGER = LogFactory.getLog(EC2Client.class);
     public static final String DEFAULT_VPC_SECURITY_GROUP = "webserver";
     public static final String AUTO_SCALING_GROUP_NAME = "testAutoScaling";
-    public static final String LAUNCH_CONFIGURATION_NAME = "test";
-    public static final String VPC_ZONE_IDENTIFIER = "subnet-6eef9844";
+    public static final String LAUNCH_CONFIGURATION_NAME = "SiyuTest";
+    public static final String SUBNET_ZONE_IDENTIFIER = "subnet-6eef9844";
     public static final int CAPACITY = 1;
+    public static final String INSTANCEID = "i-0075fe32decd478a0";
 
     private AmazonEC2 instance = null;
     private AmazonAutoScalingClient autoScalingClient = null;
@@ -82,7 +83,6 @@ public class EC2Client {
                                 }).values()));
         return terminateInstancesResult.getTerminatingInstances();
     }
-
 
     public Reservation createFreeTierInstance() {
         RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
@@ -216,8 +216,14 @@ public class EC2Client {
                 return subnet.getSubnetId();
             }
         }).values().asList();
-    }
 
+        /*try {
+            Properties properties = PropertiesLoaderUtils.loadProperties(new ClassPathResource(
+                    this.getClass().getResource(CREDENTIAL_PROFILE).getPath()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
 
     private AmazonAutoScalingClient getAmazonAutoScalingClient() {
         if (autoScalingClient == null) {
@@ -226,13 +232,29 @@ public class EC2Client {
         return autoScalingClient;
     }
 
+
+    public void runInstance() {
+        RunInstancesRequest runInstancesRequest = new RunInstancesRequest()
+                .withImageId("ami-d56a96b8")
+                .withMinCount(1)
+                .withMaxCount(1);
+        getAmazonEC2Client().runInstances(runInstancesRequest);
+    }
+
+    public List<InstanceStateChange> startInstance() {
+        StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
+                .withInstanceIds(INSTANCEID);
+        getAmazonEC2Client().startInstances(startInstancesRequest);
+        StartInstancesResult startInstancesResult = new StartInstancesResult();
+        return startInstancesResult.getStartingInstances();
+    }
+
     public void createAutoScalingGroup() {
         CreateAutoScalingGroupRequest createAutoScalingGroupRequest = new CreateAutoScalingGroupRequest()
                 .withAutoScalingGroupName(AUTO_SCALING_GROUP_NAME)
-                .withLaunchConfigurationName(LAUNCH_CONFIGURATION_NAME)
-                //.withInstanceId("i-0b93075062c7ab45a")
-                //.withAvailabilityZones("us-east-1")
-                .withVPCZoneIdentifier(VPC_ZONE_IDENTIFIER)
+                // .withLaunchConfigurationName(LAUNCH_CONFIGURATION_NAME)
+                .withInstanceId(INSTANCEID)
+                .withVPCZoneIdentifier(SUBNET_ZONE_IDENTIFIER)
                 .withDesiredCapacity(CAPACITY)
                 .withMaxSize(CAPACITY)
                 .withMinSize(CAPACITY);
@@ -247,11 +269,19 @@ public class EC2Client {
         getAmazonAutoScalingClient().deleteAutoScalingGroup(deleteAutoScalingGroupRequest);
     }
 
-    public String createLaunchConfiguration() {
+    public void createLaunchConfiguration(String launchConfigurationName) {
         CreateLaunchConfigurationRequest createLaunchConfigurationRequest = new CreateLaunchConfigurationRequest()
-                .withLaunchConfigurationName("launchConfiguration")
-                .withImageId(ImageType.Ubuntu_Virgnia.getImageId());
-        return LAUNCH_CONFIGURATION_NAME;
+                .withLaunchConfigurationName(launchConfigurationName)
+                .withImageId(ImageType.Ubuntu_Virgnia.getImageId())
+                .withInstanceType(InstanceType.T2Micro.toString());
+        getAmazonAutoScalingClient().createLaunchConfiguration(createLaunchConfigurationRequest);
+    }
+
+    public void deleteLaunchConfiguration(String launchConfigurationName) {
+        DeleteLaunchConfigurationRequest deleteLaunchConfigurationRequest = new DeleteLaunchConfigurationRequest()
+                .withLaunchConfigurationName(launchConfigurationName);
+        getAmazonAutoScalingClient().deleteLaunchConfiguration(deleteLaunchConfigurationRequest);
+
     }
 
     public boolean noAutoScalingGroup() {

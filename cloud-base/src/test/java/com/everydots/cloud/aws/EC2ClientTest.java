@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
  */
 public class EC2ClientTest {
 
-
+    public static final String LAUNCH_CONFIGURATION_NAME = "SiyuTest";
     private EC2Client ec2Client = new EC2Client();
 
     @Test
@@ -39,6 +39,22 @@ public class EC2ClientTest {
     }
 
     @Test
+    public void shouldStartInstance() throws Exception {
+        System.out.println(ec2Client.startInstance());
+
+    }
+
+    @Test
+    public void shouldCreateLaunchConfiguration() throws Exception {
+        ec2Client.createLaunchConfiguration(LAUNCH_CONFIGURATION_NAME);
+    }
+
+    @Test
+    public void shouldDeleteLaunchConfiguration() throws Exception {
+        ec2Client.deleteLaunchConfiguration(LAUNCH_CONFIGURATION_NAME);
+    }
+
+    @Test
     public void shouldCreateAutoScalingGroup() throws Exception {
         ec2Client.createAutoScalingGroup();
         List<Instance> instances = ec2Client.describeActiveInstances();
@@ -50,15 +66,14 @@ public class EC2ClientTest {
     public void shouldAutoRunInstance() throws Exception {
         ec2Client.terminateInstanceInAutoScalingGroup("i-0ca4fe8b8c8febf81");
 
-//        assertThat(ec2Client.describeActiveInstances().size(), is(1));
-//
-//        List<Instance> instancesAfterTerminate = ec2Client.describeActiveInstances();
-//        assertThat(instancesAfterTerminate.size(), is(1));
+        assertThat(ec2Client.describeActiveInstances().size(), is(1));
+
+        List<Instance> instancesAfterTerminate = ec2Client.describeActiveInstances();
+        assertThat(instancesAfterTerminate.size(), is(1));
     }
 
     @Test
     public void shouldDeleteAutoScalingGroup() throws Exception {
         ec2Client.deleteAutoScalingGroup();
     }
-
 }
