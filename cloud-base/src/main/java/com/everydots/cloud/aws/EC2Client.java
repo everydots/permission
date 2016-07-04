@@ -4,9 +4,13 @@ import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.ClasspathPropertiesFileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.autoscaling.AmazonAutoScalingClient;
+import com.amazonaws.services.autoscaling.model.*;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2Client;
 import com.amazonaws.services.ec2.model.*;
+import com.amazonaws.services.ec2.model.Filter;
+import com.amazonaws.services.ec2.model.Instance;
 import com.everydots.cloud.utils.FileUtils;
 import com.everydots.common.Constants;
 import com.everydots.common.Messages;
@@ -31,8 +35,14 @@ public class EC2Client {
     public static final String CREDENTIAL_PROFILE = "awsCredentials.properties";
     public static final Log LOGGER = LogFactory.getLog(EC2Client.class);
     public static final String DEFAULT_VPC_SECURITY_GROUP = "webserver";
+    public static final String AUTO_SCALING_GROUP_NAME = "testAutoScaling";
+    public static final String LAUNCH_CONFIGURATION_NAME = "SiyuTest";
+    public static final String SUBNET_ZONE_IDENTIFIER = "subnet-6eef9844";
+    public static final int CAPACITY = 1;
+    public static final String INSTANCEID = "i-0075fe32decd478a0";
 
     private AmazonEC2 instance = null;
+    private AmazonAutoScalingClient autoScalingClient = null;
 
     private AmazonEC2 getAmazonEC2Client() {
         if (instance == null) {
@@ -43,15 +53,20 @@ public class EC2Client {
     }
 
     public List<Instance> describeInstances() {
-        DescribeInstancesResult describeInstances = getAmazonEC2Client().describeInstances();
-        return describeInstances.getReservations().get(0).getInstances();
+        return from(getAmazonEC2Client().describeInstances().getReservations())
+                .toMap(new Function<Reservation, Instance>() {
+                    @Override
+                    public Instance apply(Reservation reservation) {
+                        return reservation.getInstances().get(0);
+                    }
+                }).values().asList();
     }
 
     public List<Instance> describeActiveInstances() {
         return from(describeInstances()).filter(new Predicate<Instance>() {
             @Override
             public boolean apply(Instance instance) {
-                return instance.getState().getCode().equals(16);
+                return "running".equals(instance.getState().getName());
             }
         }).toList();
     }
@@ -68,7 +83,6 @@ public class EC2Client {
                                 }).values()));
         return terminateInstancesResult.getTerminatingInstances();
     }
-
 
     public Reservation createFreeTierInstance() {
         RunInstancesRequest runInstancesRequest = new RunInstancesRequest();
@@ -202,5 +216,103 @@ public class EC2Client {
                 return subnet.getSubnetId();
             }
         }).values().asList();
+
+        /*try {
+            Properties properties = PropertiesLoaderUtils.loadProperties(new ClassPathResource(
+                    this.getClass().getResource(CREDENTIAL_PROFILE).getPath()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+    }
+
+    private AmazonAutoScalingClient getAmazonAutoScalingClient() {
+        if (autoScalingClient == null) {
+            autoScalingClient = new AmazonAutoScalingClient(new ClasspathPropertiesFileCredentialsProvider());
+        }
+        return autoScalingClient;
+    }
+
+
+    public void runInstance() {
+        RunInstancesRequest runInstancesRequest = new RunInstancesRequest()
+                .withImageId("ami-d56a96b8")
+                .withMinCount(1)
+                .withMaxCount(1);
+        getAmazonEC2Client().runInstances(runInstancesRequest);
+    }
+
+    public List<InstanceStateChange> startInstance() {
+        StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
+                .withInstanceIds(INSTANCEID);
+        getAmazonEC2Client().startInstances(startInstancesRequest);
+        StartInstancesResult startInstancesResult = new StartInstancesResult();
+        return startInstancesResult.getStartingInstances();
+    }
+
+    public void createAutoScalingGroup() {
+        CreateAutoScalingGroupRequest createAutoScalingGroupRequest = new CreateAutoScalingGroupRequest()
+                .withAutoScalingGroupName(AUTO_SCALING_GROUP_NAME)
+                // .withLaunchConfigurationName(LAUNCH_CONFIGURATION_NAME)
+                .withInstanceId(INSTANCEID)
+                .withVPCZoneIdentifier(SUBNET_ZONE_IDENTIFIER)
+                .withDesiredCapacity(CAPACITY)
+                .withMaxSize(CAPACITY)
+                .withMinSize(CAPACITY);
+        getAmazonAutoScalingClient().createAutoScalingGroup(createAutoScalingGroupRequest);
+
+    }
+
+    public void deleteAutoScalingGroup() {
+        DeleteAutoScalingGroupRequest deleteAutoScalingGroupRequest = new DeleteAutoScalingGroupRequest()
+                .withAutoScalingGroupName(AUTO_SCALING_GROUP_NAME)
+                .withForceDelete(Boolean.TRUE);
+        getAmazonAutoScalingClient().deleteAutoScalingGroup(deleteAutoScalingGroupRequest);
+    }
+
+    public void createLaunchConfiguration(String launchConfigurationName) {
+        CreateLaunchConfigurationRequest createLaunchConfigurationRequest = new CreateLaunchConfigurationRequest()
+                .withLaunchConfigurationName(launchConfigurationName)
+                .withImageId(ImageType.Ubuntu_Virgnia.getImageId())
+                .withInstanceType(InstanceType.T2Micro.toString());
+        getAmazonAutoScalingClient().createLaunchConfiguration(createLaunchConfigurationRequest);
+    }
+
+    public void deleteLaunchConfiguration(String launchConfigurationName) {
+        DeleteLaunchConfigurationRequest deleteLaunchConfigurationRequest = new DeleteLaunchConfigurationRequest()
+                .withLaunchConfigurationName(launchConfigurationName);
+        getAmazonAutoScalingClient().deleteLaunchConfiguration(deleteLaunchConfigurationRequest);
+
+    }
+
+    public boolean noAutoScalingGroup() {
+        DescribeAutoScalingGroupsResult scalingGroupsResult = getAmazonAutoScalingClient()
+                .describeAutoScalingGroups(new DescribeAutoScalingGroupsRequest()
+                        .withAutoScalingGroupNames(AUTO_SCALING_GROUP_NAME));
+        AutoScalingGroup autoScalingGroup = scalingGroupsResult.getAutoScalingGroups().get(0);
+        return CollectionUtils.isEmpty(scalingGroupsResult.getAutoScalingGroups());
+    }
+
+    public AutoScalingGroup getAutoScalingGroup() {
+        DescribeAutoScalingGroupsResult scalingGroupsResult = getAmazonAutoScalingClient()
+                .describeAutoScalingGroups(new DescribeAutoScalingGroupsRequest()
+                        .withAutoScalingGroupNames(AUTO_SCALING_GROUP_NAME));
+        if (CollectionUtils.isEmpty(scalingGroupsResult.getAutoScalingGroups())) {
+            createAutoScalingGroup();
+        }
+        return from(scalingGroupsResult.getAutoScalingGroups()).firstMatch(new Predicate<AutoScalingGroup>() {
+            @Override
+            public boolean apply(AutoScalingGroup autoScalingGroup) {
+                return autoScalingGroup.getAutoScalingGroupName().equals(AUTO_SCALING_GROUP_NAME);
+            }
+        }).orNull();
+    }
+
+    public TerminateInstanceInAutoScalingGroupResult terminateInstanceInAutoScalingGroup(String instanceId) {
+        TerminateInstanceInAutoScalingGroupRequest terminateInstanceInAutoScalingGroupRequest
+                = new TerminateInstanceInAutoScalingGroupRequest()
+                .withShouldDecrementDesiredCapacity(Boolean.FALSE)
+                .withInstanceId(instanceId);
+        return getAmazonAutoScalingClient()
+                .terminateInstanceInAutoScalingGroup(terminateInstanceInAutoScalingGroupRequest);
     }
 }
