@@ -42,6 +42,4 @@ public class CostAnalysis {
     Object statistic() throws Exception {
         return costService.statisticRecords();
     }
-
-
 }

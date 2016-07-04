@@ -11,5 +11,12 @@
 
     <artifactId>stock-analysis</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.everydots.premium</groupId>
+            <artifactId>cloud-base</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
