@@ -8,6 +8,7 @@ import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.Bucket;
 import com.everydots.common.S3File;
 import com.everydots.utils.PropertiesUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -44,6 +45,9 @@ public class S3Client {
 
     public void uploadFiles(String bucketName, List<S3File> inputStreams) {
         try {
+            if (!StringUtils.isNotEmpty(bucketName)) {
+                return;
+            }
             for (S3File inputStream : inputStreams) {
                 if (getS3Client().doesObjectExist(bucketName, inputStream.getKey())) {
                     continue;

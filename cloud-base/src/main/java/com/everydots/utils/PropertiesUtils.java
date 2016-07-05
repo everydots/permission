@@ -1,8 +1,6 @@
 package com.everydots.utils;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.support.PropertiesLoaderUtils;
-
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -34,8 +32,9 @@ public class PropertiesUtils {
 
     public static String getProperty(String bucketName) {
         try {
-            Properties properties = PropertiesLoaderUtils.loadProperties(new ClassPathResource(Thread
-                    .currentThread().getContextClassLoader().getResource(PROPERTIES_NAME).getPath()));
+            Properties properties = new Properties();
+            properties.load(Thread
+                    .currentThread().getContextClassLoader().getResourceAsStream(PROPERTIES_NAME));
             return properties.getProperty(bucketName);
         } catch (IOException e) {
             e.printStackTrace();

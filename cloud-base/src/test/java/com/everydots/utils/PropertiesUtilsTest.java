@@ -11,4 +11,10 @@ public class PropertiesUtilsTest {
     public void testWritePropertiesFiles() throws Exception {
         PropertiesUtils.writeProperty("bucketName", "testaaaaaa");
     }
+
+    @Test
+    public void testReadProperties() throws Exception {
+        String bucketName = PropertiesUtils.getProperty("bucketName");
+        System.out.println(bucketName);
+    }
 }
