@@ -3,8 +3,10 @@ package com.everydots.cloud.aws;
 import com.amazonaws.auth.ClasspathPropertiesFileCredentialsProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.ec2.model.InstanceType;
 import com.amazonaws.services.elasticmapreduce.AmazonElasticMapReduceClient;
 import com.amazonaws.services.elasticmapreduce.model.AddInstanceGroupsRequest;
+import com.amazonaws.services.elasticmapreduce.model.InstanceGroupConfig;
 
 public class EMRClient {
 
@@ -21,7 +23,10 @@ public class EMRClient {
 
     public void createEMRCluster() {
         AddInstanceGroupsRequest addInstanceGroupsRequest = new AddInstanceGroupsRequest()
-                .withInstanceGroups();
+                .withInstanceGroups(new InstanceGroupConfig()
+                        .withInstanceType(InstanceType.T1Micro.toString())
+                        .withInstanceCount(2)
+                       );
         getEMRClient().addInstanceGroups(addInstanceGroupsRequest);
     }
 }
