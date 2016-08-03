@@ -1,4 +1,4 @@
-package com.everydots.cost.dao;
+package com.everydots.cost.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -8,6 +8,7 @@ import java.util.Map;
 import com.everydots.cost.beans.CostRecord;
 import com.everydots.cost.common.Constants;
 import com.everydots.cost.common.SQLs;
+import com.everydots.cost.dao.CostDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -6,6 +6,15 @@ package com.everydots.cost.beans;
 public class User {
     private String username;
     private String password;
+    private boolean isRemember;
+
+    public boolean getIsRemember() {
+        return isRemember;
+    }
+
+    public void setIsRemember(boolean isRemember) {
+        this.isRemember = isRemember;
+    }
 
     public String getUsername() {
         return username;
