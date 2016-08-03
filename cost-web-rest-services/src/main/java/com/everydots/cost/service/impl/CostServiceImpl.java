@@ -1,4 +1,4 @@
-package com.everydots.cost.service;
+package com.everydots.cost.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.everydots.cost.beans.CostRecord;
 import com.everydots.cost.dao.CostDao;
+import com.everydots.cost.service.CostService;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
