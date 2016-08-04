@@ -6,7 +6,6 @@ import com.everydots.cost.service.UserService;
 import com.everydots.cost.utils.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,10 +33,15 @@ public class Auth {
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public
     @ResponseBody
-    Object register(@RequestBody String content, Model model) throws Exception {
+    Object register(@RequestBody String content, HttpServletRequest request) throws Exception {
         User user = MapperUtil.mapAsUser(content);
-        user.setUsername(String.valueOf(model.addAttribute("user.userName")));
-        user.setPassword(String.valueOf(model.addAttribute("user.password")));
+
+        String email = request.getParameter("inputEmail3");
+        String password = request.getParameter("inputPassword3");
+
+        user.setUsername(email);
+        user.setPassword(password);
+        System.out.println(email + password);
         return Wrapper.wrapperSuccess(userService.addUser(user));
     }
 

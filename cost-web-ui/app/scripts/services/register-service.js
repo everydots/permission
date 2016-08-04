@@ -6,7 +6,7 @@ angular.module('costAnalysisApp')
         return $http({
           method: 'POST',
           data: user,
-          url: Constants.SERVICE_URLS.REGISTER
+          url: Constants.SERVICE_URLS.REGISTER_URL
         });
       }
     };
