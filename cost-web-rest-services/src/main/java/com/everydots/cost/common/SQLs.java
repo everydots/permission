@@ -8,4 +8,7 @@ public class SQLs {
     public static final String UPDATE_COST_BY_NAME = "update set cost=? where service_name=?";
     public static final String STATISTIC_SERVICE_COST_SQL = "select id,service_name,sum(cost) cost from cost_services group by service_name order by cost desc";
     public static final String QUERY_USER = "select * from user where username = ?";
+    public static final String INSERT_USER = "insert into user values(?,?)";
+
+
 }

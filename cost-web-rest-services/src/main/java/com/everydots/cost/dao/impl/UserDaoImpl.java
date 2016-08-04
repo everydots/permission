@@ -1,15 +1,18 @@
 package com.everydots.cost.dao.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import com.everydots.cost.beans.User;
+import com.everydots.cost.common.Constants;
 import com.everydots.cost.common.SQLs;
 import com.everydots.cost.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -29,5 +32,17 @@ public class UserDaoImpl implements UserDao {
                         return user;
                     }
                 });
+    }
+
+    @Override
+    public Object addUser(final User user) {
+        this.jdbcTemplate.update(SQLs.INSERT_USER, new PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps) throws SQLException {
+                ps.setString(1, user.getUsername());
+                ps.setString(2, user.getPassword());
+            }
+        });
+        return Constants.SUCCESS;
     }
 }

@@ -1,18 +1,19 @@
 package com.everydots.cost.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.everydots.cost.beans.User;
 import com.everydots.cost.common.Wrapper;
 import com.everydots.cost.service.UserService;
 import com.everydots.cost.utils.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("auth")
@@ -28,6 +29,16 @@ public class Auth {
         User user = MapperUtil.mapAsUser(content);
         boolean isValid = userService.validateUser(user);
         return Wrapper.wrapperSuccess(isValid);
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    Object register(@RequestBody String content, Model model) throws Exception {
+        User user = MapperUtil.mapAsUser(content);
+        user.setUsername(String.valueOf(model.addAttribute("user.userName")));
+        user.setPassword(String.valueOf(model.addAttribute("user.password")));
+        return Wrapper.wrapperSuccess(userService.addUser(user));
     }
 
     @RequestMapping("test")
