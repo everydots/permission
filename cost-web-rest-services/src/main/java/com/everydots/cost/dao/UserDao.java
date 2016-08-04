@@ -5,7 +5,5 @@ import com.everydots.cost.beans.User;
 public interface UserDao {
     public User getUser(String username);
 
-    Object addUser(User user);
-
     String insertUser(final User user);
 }

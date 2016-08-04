@@ -36,6 +36,7 @@ public class UserDaoImpl implements UserDao {
     }
 
 
+    @Override
     public String insertUser(final User user) {
         jdbcTemplate.update(SQLs.INSERT_USER_SQL, new PreparedStatementSetter() {
             @Override
@@ -44,18 +45,6 @@ public class UserDaoImpl implements UserDao {
                 ps.setString(2, user.getUsername());
                 ps.setString(3, user.getPassword());
                 ps.setString(4, user.getEmail());
-            }
-        });
-        return Constants.SUCCESS;
-    }
-
-    @Override
-    public Object addUser(final User user) {
-        this.jdbcTemplate.update(SQLs.INSERT_USER, new PreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, user.getUsername());
-                ps.setString(2, user.getPassword());
             }
         });
         return Constants.SUCCESS;

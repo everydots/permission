@@ -18,8 +18,7 @@ public class DataSourceClient {
 
     public static final String JDBC_CONFIG_FILE = "jdbc.properties";
     public static final String SERVICE_TABLE_NAME = "cost_services";
-    public static final String USER_TABLE_NAME = "cost_user";
-    public static final String TABLE_NAME = "user";
+    public static final String USER_TABLE_NAME = "user";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
