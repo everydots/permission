@@ -5,6 +5,7 @@ angular.module('costAnalysisApp')
             SERVICE_COST: ENV + 'rest/analysis/services',
             SERVICE_COST_STATISTIC: ENV + 'rest/analysis/services/statistic',
 
-            LOGIN_URL: ENV + 'rest/auth/login'
+            LOGIN_URL: ENV + 'rest/auth/login',
+            REGISTER_URL: ENV + 'rest/auth/register'
         }
     });
