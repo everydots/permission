@@ -2,6 +2,7 @@ package com.everydots.cost.controller;
 
 import com.everydots.cost.beans.User;
 import com.everydots.cost.common.Wrapper;
+import com.everydots.cost.models.UserModel;
 import com.everydots.cost.service.UserService;
 import com.everydots.cost.utils.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +35,8 @@ public class Auth {
     public
     @ResponseBody
     Object register(@RequestBody String content, HttpServletRequest request) throws Exception {
-        User user = MapperUtil.mapAsUser(content);
-
-        String email = request.getParameter("inputEmail3");
-        String password = request.getParameter("inputPassword3");
-
-        user.setUsername(email);
-        user.setPassword(password);
-        System.out.println(email + password);
-        return Wrapper.wrapperSuccess(userService.addUser(user));
+         UserModel userModel = MapperUtil.mapAsUserModel(content);
+        return Wrapper.wrapperSuccess(userService.addUser(userModel));
     }
 
     @RequestMapping("test")

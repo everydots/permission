@@ -26,25 +26,27 @@ public class UserDaoImpl implements UserDao {
                     @Override
                     public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                         User user = new User();
+                        user.setId(rs.getString("id"));
                         user.setUsername(rs.getString("username"));
                         user.setPassword(rs.getString("password"));
-                        user.setIsRemember(rs.getBoolean("isRemember"));
+                        user.setEmail(rs.getString("email"));
                         return user;
                     }
                 });
     }
 
 
-    public void insertUser(final User user) {
+    public String insertUser(final User user) {
         jdbcTemplate.update(SQLs.INSERT_USER_SQL, new PreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps) throws SQLException {
                 ps.setString(1, user.getId());
                 ps.setString(2, user.getUsername());
                 ps.setString(3, user.getPassword());
-                ps.setBoolean(4, user.getIsRemember());
+                ps.setString(4, user.getEmail());
             }
         });
+        return Constants.SUCCESS;
     }
 
     @Override

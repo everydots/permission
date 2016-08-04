@@ -1,11 +1,11 @@
 package com.everydots.cost.dao;
 
+import java.io.IOException;
+
 import com.everydots.cloud.beans.MySqlDataSourceBean;
 import com.everydots.cloud.service.RDSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 @Service
 public class MySqlDBInitialize {
@@ -29,9 +29,7 @@ public class MySqlDBInitialize {
         } else {
             this.dataSource = rdsService.getDataSourceBean();
         }
-        if (!dbClient.tableInitialized(dataSource)) {
-            dbClient.initTable(dataSource);
-        }
+        dbClient.initTable(dataSource);
     }
 
 }

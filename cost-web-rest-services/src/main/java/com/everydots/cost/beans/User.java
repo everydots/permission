@@ -9,7 +9,7 @@ public class User {
     private String id;
     private String username;
     private String password;
-    private boolean isRemember;
+    private String email;
 
     public User() {
         this.id = UUID.randomUUID().toString().replace("-", "");
@@ -23,12 +23,12 @@ public class User {
         this.id = id;
     }
 
-    public boolean getIsRemember() {
-        return isRemember;
+    public String getEmail() {
+        return email;
     }
 
-    public void setIsRemember(boolean isRemember) {
-        this.isRemember = isRemember;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {

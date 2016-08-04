@@ -2,6 +2,7 @@ package com.everydots.cost.service.impl;
 
 import com.everydots.cost.beans.User;
 import com.everydots.cost.dao.impl.UserDaoImpl;
+import com.everydots.cost.models.UserModel;
 import com.everydots.cost.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Object addUser(User user) {
-        return userDao.addUser(user);
+    public String addUser(UserModel userModel) {
+        User user = new User();
+        user.setUsername(userModel.getUsername());
+        user.setPassword(userModel.getPassword());
+        user.setEmail(userModel.getEmail());
+        return userDao.insertUser(user);
     }
 }
