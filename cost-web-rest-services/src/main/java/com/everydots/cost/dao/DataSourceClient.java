@@ -29,10 +29,10 @@ public class DataSourceClient {
     }
 
     public void initTable(MySqlDataSourceBean dataSource) {
-        if (isTableExist(SERVICE_TABLE_NAME)) {
+        if (!isTableExist(SERVICE_TABLE_NAME)) {
             jdbcTemplate.execute(SQLs.CREATE_COST_TABLE_SQL);
         }
-        if (isTableExist(USER_TABLE_NAME)) {
+        if (!isTableExist(USER_TABLE_NAME)) {
             jdbcTemplate.execute(SQLs.CREATE_USER_SQL);
         }
     }
