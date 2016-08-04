@@ -8,4 +8,5 @@ public class SQLs {
     public static final String UPDATE_COST_BY_NAME = "update set cost=? where service_name=?";
     public static final String STATISTIC_SERVICE_COST_SQL = "select id,service_name,sum(cost) cost from cost_services group by service_name order by cost desc";
     public static final String QUERY_USER = "select * from user where username = ?";
+    public static final String CREATE_USER_SQL = "create table cost_user (id VARCHAR(32) ,username VARCHAR(100) ,email VARCHAR(32), password VARCHAR(64) ,isRemember VARCHAR(1))";
 }
