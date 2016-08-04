@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.everydots.cost.beans.User;
+import com.everydots.cost.common.Constants;
 import com.everydots.cost.common.SQLs;
 import com.everydots.cost.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,17 @@ public class UserDaoImpl implements UserDao {
                 ps.setBoolean(4, user.getIsRemember());
             }
         });
+    }
+
+    @Override
+    public Object addUser(final User user) {
+        this.jdbcTemplate.update(SQLs.INSERT_USER, new PreparedStatementSetter() {
+            @Override
+            public void setValues(PreparedStatement ps) throws SQLException {
+                ps.setString(1, user.getUsername());
+                ps.setString(2, user.getPassword());
+            }
+        });
+        return Constants.SUCCESS;
     }
 }

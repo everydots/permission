@@ -12,4 +12,7 @@ public class SQLs {
     public static final String CREATE_USER_SQL = "create table cost_user (id VARCHAR(32) ,username VARCHAR(100) ,email VARCHAR(32), password VARCHAR(64) ,isRemember VARCHAR(1))";
     public static final String INSERT_USER_SQL = "insert into cost_user values(?,?,?,?,?)";
 
+    public static final String INSERT_USER = "insert into user values(?,?)";
+
+
 }

@@ -16,4 +16,9 @@ public class UserServiceImpl implements UserService {
         User existingUser = userDao.getUser(user.getUsername());
         return user.getPassword().equals(existingUser.getPassword());
     }
+
+    @Override
+    public Object addUser(User user) {
+        return userDao.addUser(user);
+    }
 }

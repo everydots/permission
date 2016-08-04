@@ -1,10 +1,5 @@
 package com.everydots.cost.dao;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.util.Properties;
-
 import com.everydots.cloud.beans.MySqlDataSourceBean;
 import com.everydots.cost.common.SQLs;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +8,18 @@ import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.util.Properties;
+
 @Service
 public class DataSourceClient {
 
     public static final String JDBC_CONFIG_FILE = "jdbc.properties";
     public static final String SERVICE_TABLE_NAME = "cost_services";
     public static final String USER_TABLE_NAME = "cost_user";
+    public static final String TABLE_NAME = "user";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
