@@ -2,8 +2,8 @@ package com.everydots.cost.utils;
 
 import java.io.IOException;
 
-import com.everydots.cost.models.SignInModel;
-import com.everydots.cost.models.SignUpModel;
+import com.everydots.cost.model.SignInModel;
+import com.everydots.cost.model.SignUpModel;
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**

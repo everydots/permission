@@ -1,4 +1,4 @@
-package com.everydots.cost.models;
+package com.everydots.cost.model;
 
 public class SignInModel {
 

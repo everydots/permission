@@ -2,8 +2,8 @@ package com.everydots.cost.service.impl;
 
 import com.everydots.cost.domain.User;
 import com.everydots.cost.dao.UserDao;
-import com.everydots.cost.models.SignInModel;
-import com.everydots.cost.models.SignUpModel;
+import com.everydots.cost.model.SignInModel;
+import com.everydots.cost.model.SignUpModel;
 import com.everydots.cost.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

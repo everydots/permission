@@ -1,8 +1,8 @@
 package com.everydots.cost.controller;
 
 import com.everydots.cost.common.Wrapper;
-import com.everydots.cost.models.SignInModel;
-import com.everydots.cost.models.SignUpModel;
+import com.everydots.cost.model.SignInModel;
+import com.everydots.cost.model.SignUpModel;
 import com.everydots.cost.service.UserService;
 import com.everydots.cost.utils.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;

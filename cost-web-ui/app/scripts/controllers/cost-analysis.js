@@ -20,7 +20,7 @@ angular.module('costAnalysisApp')
                     if (content.status === 200 && angular.isArray(content.data)) {
                         var dataArray = [];
                         content.data.forEach(function (item) {
-                            $scope.labels.push(item.serviceName);
+                            $scope.labels.push(item.service_name);
                             dataArray.push(item.cost);
                         });
                         $scope.data.push(dataArray);
