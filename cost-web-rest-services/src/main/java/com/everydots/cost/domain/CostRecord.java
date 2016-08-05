@@ -1,6 +1,4 @@
-package com.everydots.cost.beans;
-
-import java.util.UUID;
+package com.everydots.cost.domain;
 
 public class CostRecord extends Record{
 

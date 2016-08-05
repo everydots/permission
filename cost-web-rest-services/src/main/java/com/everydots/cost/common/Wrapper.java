@@ -1,6 +1,6 @@
 package com.everydots.cost.common;
 
-import com.everydots.cost.beans.SuccessResult;
+import com.everydots.cost.bean.SuccessResult;
 
 public class Wrapper {
 

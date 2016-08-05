@@ -9,7 +9,7 @@ public class SQLs {
     public static final String STATISTIC_SERVICE_COST_SQL = "select id,service_name,sum(cost) cost from cost_services group by service_name order by cost desc";
 
     public static final String QUERY_USER = "select * from user where username = ?";
-    public static final String CREATE_USER_SQL = "create table user (id VARCHAR(32) ,username VARCHAR(100) ,password VARCHAR(100), email VARCHAR(32)";
+    public static final String CREATE_USER_SQL = "create table user(id VARCHAR(32) ,username VARCHAR(100) ,password VARCHAR(100), email VARCHAR(32))";
     public static final String INSERT_USER_SQL = "insert into user values(?,?,?,?)";
 
 }

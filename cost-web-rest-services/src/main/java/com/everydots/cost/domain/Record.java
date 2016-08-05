@@ -1,4 +1,4 @@
-package com.everydots.cost.beans;
+package com.everydots.cost.domain;
 
 import java.util.UUID;
 

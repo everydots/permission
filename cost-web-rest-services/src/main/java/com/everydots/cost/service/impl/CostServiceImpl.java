@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.everydots.cost.beans.CostRecord;
+import com.everydots.cost.domain.CostRecord;
 import com.everydots.cost.dao.CostDao;
 import com.everydots.cost.service.CostService;
 import org.apache.commons.lang.math.RandomUtils;

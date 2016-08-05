@@ -1,8 +1,8 @@
 package com.everydots.cost.controller;
 
-import com.everydots.cost.beans.User;
 import com.everydots.cost.common.Wrapper;
-import com.everydots.cost.models.UserModel;
+import com.everydots.cost.models.SignInModel;
+import com.everydots.cost.models.SignUpModel;
 import com.everydots.cost.service.UserService;
 import com.everydots.cost.utils.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +26,8 @@ public class Auth {
     public
     @ResponseBody
     Object login(@RequestBody String content) throws Exception {
-        User user = MapperUtil.mapAsUser(content);
-        boolean isValid = userService.validateUser(user);
+        SignInModel signInModel = MapperUtil.mapAsUser(content);
+        boolean isValid = userService.validateUser(signInModel);
         return Wrapper.wrapperSuccess(isValid);
     }
 
@@ -35,8 +35,8 @@ public class Auth {
     public
     @ResponseBody
     Object register(@RequestBody String content, HttpServletRequest request) throws Exception {
-         UserModel userModel = MapperUtil.mapAsUserModel(content);
-        return Wrapper.wrapperSuccess(userService.addUser(userModel));
+         SignUpModel signUpModel = MapperUtil.mapAsUserModel(content);
+        return Wrapper.wrapperSuccess(userService.addUser(signUpModel));
     }
 
     @RequestMapping("test")

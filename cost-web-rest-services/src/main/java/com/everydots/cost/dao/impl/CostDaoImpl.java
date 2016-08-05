@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import com.everydots.cost.beans.CostRecord;
+import com.everydots.cost.domain.CostRecord;
 import com.everydots.cost.common.Constants;
 import com.everydots.cost.common.SQLs;
 import com.everydots.cost.dao.CostDao;

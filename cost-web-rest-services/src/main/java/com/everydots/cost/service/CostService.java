@@ -1,6 +1,6 @@
 package com.everydots.cost.service;
 
-import com.everydots.cost.beans.CostRecord;
+import com.everydots.cost.domain.CostRecord;
 
 import java.util.List;
 import java.util.Map;

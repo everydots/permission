@@ -5,14 +5,21 @@ angular.module('costAnalysisApp')
         return {
             restrict: 'E',
             templateUrl: '../../views/template/login-page.html',
-            controller: ['$scope', '$attrs', 'loginPageService',
-                function ($scope, $attrs, loginPageService) {
+            controller: ['$scope', '$attrs', '$location', 'loginPageService',
+                function ($scope, $attrs, $location, loginPageService) {
                     $scope.user = {
                         username: '',
                         password: '',
                         isRemember: false
                     };
-                    $scope.login = loginPageService.login;
+                    $scope.login = function (user) {
+                        loginPageService.login(user)
+                            .then(function (result) {
+                                if (result) {
+                                    $location.path("main");
+                                }
+                            });
+                    }
                 }]
         };
     });

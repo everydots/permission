@@ -1,21 +1,21 @@
 package com.everydots.cost.utils;
 
-import com.everydots.cost.beans.User;
-import com.everydots.cost.models.UserModel;
-import org.codehaus.jackson.map.ObjectMapper;
-
 import java.io.IOException;
 
+import com.everydots.cost.models.SignInModel;
+import com.everydots.cost.models.SignUpModel;
+import org.codehaus.jackson.map.ObjectMapper;
+
 /**
- *数据转换类
+ * 数据转换类
  */
 public class MapperUtil {
 
-    public static User mapAsUser(String content){
-        ObjectMapper mapper =new ObjectMapper();
-        User user= null;
+    public static SignInModel mapAsUser(String content) {
+        ObjectMapper mapper = new ObjectMapper();
+        SignInModel user = null;
         try {
-            user = mapper.readValue(content, User.class);
+            user = mapper.readValue(content, SignInModel.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -23,11 +23,12 @@ public class MapperUtil {
         return user;
 
     }
-    public static UserModel mapAsUserModel(String content){
-        ObjectMapper mapper =new ObjectMapper();
-        UserModel user= null;
+
+    public static SignUpModel mapAsUserModel(String content) {
+        ObjectMapper mapper = new ObjectMapper();
+        SignUpModel user = null;
         try {
-            user = mapper.readValue(content, UserModel.class);
+            user = mapper.readValue(content, SignUpModel.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package com.everydots.cost.beans;
+package com.everydots.cost.bean;
 
 import org.apache.http.HttpStatus;
 

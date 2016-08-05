@@ -1,14 +1,14 @@
 package com.everydots.cost.service;
 
-import com.everydots.cost.beans.User;
-import com.everydots.cost.models.UserModel;
+import com.everydots.cost.models.SignInModel;
+import com.everydots.cost.models.SignUpModel;
 
 /**
  * Created by xiaomingxing on 16/8/3.
  */
 public interface UserService {
 
-   boolean validateUser(User user);
+    boolean validateUser(SignInModel user);
 
-   String addUser(UserModel userModel);
+    String addUser(SignUpModel signUpModel);
 }

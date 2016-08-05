@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.everydots.cost.beans.User;
+import com.everydots.cost.domain.User;
 import com.everydots.cost.common.Constants;
 import com.everydots.cost.common.SQLs;
 import com.everydots.cost.dao.UserDao;

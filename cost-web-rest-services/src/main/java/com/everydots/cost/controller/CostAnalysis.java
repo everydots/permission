@@ -1,6 +1,6 @@
 package com.everydots.cost.controller;
 
-import com.everydots.cost.beans.User;
+import com.everydots.cost.domain.User;
 import com.everydots.cost.service.CostService;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

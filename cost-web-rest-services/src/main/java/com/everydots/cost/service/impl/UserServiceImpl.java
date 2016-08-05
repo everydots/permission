@@ -1,8 +1,9 @@
 package com.everydots.cost.service.impl;
 
-import com.everydots.cost.beans.User;
-import com.everydots.cost.dao.impl.UserDaoImpl;
-import com.everydots.cost.models.UserModel;
+import com.everydots.cost.domain.User;
+import com.everydots.cost.dao.UserDao;
+import com.everydots.cost.models.SignInModel;
+import com.everydots.cost.models.SignUpModel;
 import com.everydots.cost.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,19 +12,19 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDaoImpl userDao;
+    private UserDao userDao;
 
-    public boolean validateUser(User user) {
-        User existingUser = userDao.getUser(user.getUsername());
-        return user.getPassword().equals(existingUser.getPassword());
+    public boolean validateUser(SignInModel signInModel) {
+        User existingUser = userDao.getUser(signInModel.getUsername());
+        return signInModel.getPassword().equals(existingUser.getPassword());
     }
 
     @Override
-    public String addUser(UserModel userModel) {
+    public String addUser(SignUpModel signUpModel) {
         User user = new User();
-        user.setUsername(userModel.getUsername());
-        user.setPassword(userModel.getPassword());
-        user.setEmail(userModel.getEmail());
+        user.setUsername(signUpModel.getUsername());
+        user.setPassword(signUpModel.getPassword());
+        user.setEmail(signUpModel.getEmail());
         return userDao.insertUser(user);
     }
 }
