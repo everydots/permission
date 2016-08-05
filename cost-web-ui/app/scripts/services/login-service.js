@@ -1,5 +1,5 @@
 'use strict';
-angular.module('costAnalysisApp')
+costAnalysisApp
     .service('loginPageService', function ($http, Constants) {
         return {
 
