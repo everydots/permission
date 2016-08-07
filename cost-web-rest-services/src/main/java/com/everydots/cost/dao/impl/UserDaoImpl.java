@@ -4,16 +4,14 @@ import com.everydots.cost.dao.UserDao;
 import com.everydots.cost.domain.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
+    @Autowired
     private SqlSessionFactory sqlSessionFactory;
-
-    public UserDaoImpl(SqlSessionFactory sqlSessionFactory) {
-        this.sqlSessionFactory = sqlSessionFactory;
-    }
 
     @Override
     public User getUser(String username) {
@@ -22,7 +20,7 @@ public class UserDaoImpl implements UserDao {
             User user = (User) session.selectOne("com.everydots.cost.dao.UserDao.getUser", username);
             return user;
         } catch (Exception e) {
-
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -37,7 +35,7 @@ public class UserDaoImpl implements UserDao {
             int insert = session.insert("com.everydots.cost.dao.UserDao.insertUser", user);
             return Integer.toString(insert);
         } catch (Exception e) {
-
+            e.printStackTrace();
         } finally {
             session.close();
         }

@@ -13,7 +13,7 @@
         insert into user values(#{id},#{username},#{password},#{email})
     </insert>
 
-    <select id="getUser" parameterType="String">
+    <select id="getUser" parameterType="String" resultType="User">
         select * from user where username=#{username}
     </select>
 </mapper>
