@@ -1,6 +1,6 @@
 'use strict';
 angular.module('costAnalysisApp')
-  .service('registerDirective', function ($http, Constants) {
+  .service('registerService', function ($http, Constants) {
     return {
       register: function (user) {
         return $http({

@@ -1,8 +1,7 @@
 'use strict';
 costAnalysisApp
-    .service('loginPageService', function ($http, Constants) {
+    .service('loginService', function ($http, Constants) {
         return {
-
             login: function (user) {
                 return $http({
                     method: 'POST',
