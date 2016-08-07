@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String addUser(SignUpModel signUpModel) {
+    public int addUser(SignUpModel signUpModel) {
         User user = new User();
         user.setUsername(signUpModel.getUsername());
         user.setPassword(signUpModel.getPassword());

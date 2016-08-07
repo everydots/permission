@@ -10,5 +10,5 @@ public interface UserService {
 
     boolean validateUser(SignInModel user);
 
-    String addUser(SignUpModel signUpModel);
+    int addUser(SignUpModel signUpModel);
 }

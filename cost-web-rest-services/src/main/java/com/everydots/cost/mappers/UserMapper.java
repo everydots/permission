@@ -10,10 +10,8 @@ public interface UserMapper {
 
     @Insert(MybatisSQLs.INSERT_USER_SQL)
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    public String insertUser(User user);
+    public int insertUser(User user);
 
     @Select(MybatisSQLs.QUERY_USER)
     public User getUser(String userName);
-
-
 }
