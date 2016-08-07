@@ -1,52 +1,46 @@
 package com.everydots.cost.dao.impl;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import com.everydots.cost.domain.User;
-import com.everydots.cost.common.Constants;
-import com.everydots.cost.common.SQLs;
 import com.everydots.cost.dao.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
-import org.springframework.jdbc.core.RowMapper;
+import com.everydots.cost.domain.User;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private SqlSessionFactory sqlSessionFactory;
 
-    public User getUser(String username) {
-        return jdbcTemplate.queryForObject(SQLs.QUERY_USER, new Object[]{username},
-                new RowMapper<User>() {
-                    @Override
-                    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-                        User user = new User();
-                        user.setId(rs.getString("id"));
-                        user.setUsername(rs.getString("username"));
-                        user.setPassword(rs.getString("password"));
-                        user.setEmail(rs.getString("email"));
-                        return user;
-                    }
-                });
+    public UserDaoImpl(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
     }
 
+    @Override
+    public User getUser(String username) {
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            User user = (User) session.selectOne("com.everydots.cost.dao.UserDao.getUser", username);
+            return user;
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return null;
+    }
 
     @Override
-    public String insertUser(final User user) {
-        jdbcTemplate.update(SQLs.INSERT_USER_SQL, new PreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement ps) throws SQLException {
-                ps.setString(1, user.getId());
-                ps.setString(2, user.getUsername());
-                ps.setString(3, user.getPassword());
-                ps.setString(4, user.getEmail());
-            }
-        });
-        return Constants.SUCCESS;
+    public String insertUser(User user) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        try {
+            int insert = session.insert("com.everydots.cost.dao.UserDao.insertUser", user);
+            return Integer.toString(insert);
+        } catch (Exception e) {
+
+        } finally {
+            session.close();
+        }
+        return null;
     }
 }
