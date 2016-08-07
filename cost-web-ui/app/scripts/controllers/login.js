@@ -5,15 +5,24 @@ costAnalysisApp
     $scope.labels = [];
     $scope.data = [];
     $scope.user = {
-      username: '',
-      password: '',
-      isRemember: false
+      username: $cookieStore.get('username') || '',
+      password: $cookieStore.get('password') || '',
+      isRemember: $cookieStore.get('isRemember') || false
     };
     $scope.login = function (user) {
       loginService
         .login(user)
         .then(function (result) {
           if (result) {
+            if (user.isRemember === true) {
+              $cookieStore.put('username', user.username);
+              $cookieStore.put('password', user.password);
+              $cookieStore.put('isRemember', user.isRemember);
+            } else {
+              $cookieStore.remove('username');
+              $cookieStore.remove('password');
+              $cookieStore.remove('isRemember');
+            }
             $cookieStore.put('isLogged', true);
             $location.path("main");
           }
