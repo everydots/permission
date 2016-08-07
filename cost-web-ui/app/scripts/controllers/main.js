@@ -8,6 +8,11 @@
  * Controller of the stockWebUiApp
  */
 angular.module('costAnalysisApp')
-  .controller('MainCtrl', function () {
-
-  });
+  .controller('MainCtrl', ['$scope', '$cookieStore', function ($scope, $cookieStore) {
+    $scope.getLoginState = function () {
+      return $cookieStore.get('isLogged');
+    };
+    $scope.clearLoginState = function () {
+      return $cookieStore.remove('isLogged');
+    }
+  }]);
