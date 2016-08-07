@@ -32,4 +32,9 @@
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
     </bean>
 
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+        <property name="mapperInterface" value="com.everydots.cost.mappers.UserMapper"/>
+    </bean>
+
 </beans>
