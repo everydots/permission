@@ -1,0 +1,25 @@
+{
+  "name": "cost-web-test",
+  "version": "1.0.0",
+  "description": "test project,only for js unit test and end to end test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-protractor-runner": "^3.1.0",
+    "grunt-usemin": "^3.1.1",
+    "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^2.4.0",
+    "load-grunt-tasks": "^3.5.0",
+    "protractor": "^3.2.2"
+  }
+}

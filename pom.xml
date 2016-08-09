@@ -20,6 +20,7 @@
         <module>cost-web-ui</module>
         <module>cost-analysis</module>
         <module>cost-web-rest-services</module>
+        <module>cost-web-test</module>
     </modules>
 
 
