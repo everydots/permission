@@ -13,13 +13,13 @@ costAnalysisApp
       loginService
         .login(user)
         .then(function (result) {
-          if (result) {
+          if (result.data) {
             if (user.isRemember === true) {
               loginService.setUserInfoInCookie(user)
             } else {
               loginService.removeUserInfoInCookie()
             }
-            $cookieStore.put('isLogged', true);
+            $cookieStore.put('isLogged', true, {'expires': 2, expirationUnit: 'seconds'});
             $location.path("main");
           }
           else {

@@ -1,8 +1,5 @@
 package com.everydots.cost.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.everydots.cost.model.SignInModel;
 import com.everydots.cost.model.SignUpModel;
 import com.everydots.cost.service.UserService;
@@ -13,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("auth")
@@ -26,8 +26,7 @@ public class Auth {
     @ResponseBody
     Object login(@RequestBody String content) throws Exception {
         SignInModel signInModel = MapperUtil.mapAsUser(content);
-        boolean isValid = userService.validateUser(signInModel);
-        return isValid;
+        return userService.validateUser(signInModel);
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
