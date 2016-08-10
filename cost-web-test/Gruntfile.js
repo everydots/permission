@@ -73,6 +73,15 @@ module.exports = function (grunt) {
                     keepAlive: false
                 }
             }
+        },
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                    captureFile: 'test-report.html'
+                },
+                src: ['integration-test/*.js']
+            }
         }
     });
 
@@ -86,9 +95,10 @@ module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
 
-
+    grunt.loadNpmTasks('grunt-mocha-test')
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'jshint']);
+    grunt.registerTask('int', ['mochaTest']);
     grunt.registerTask('e2e', ['protractor:e2e']);
     grunt.registerTask('minify', ['useminPrepare', 'concat:generated', 'uglify:generated', 'usemin', 'clean']);
     grunt.registerTask('min', ['uglify:generated']);

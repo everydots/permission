@@ -2,10 +2,10 @@ describe('cost web app', function () {
     var page = require('./utils/page.js');
     var data = require('./data/user.json');
     beforeEach(function () {
-        browser.get('http://localhost:9000/#/main');
+        browser.get('/#/main');
     });
 
-    xit('should have a title', function () {
+    it('should have a title', function () {
         expect(browser.getTitle()).toEqual('cost-web');
     });
 
@@ -18,7 +18,7 @@ describe('cost web app', function () {
         expect(browser.getCurrentUrl()).toEqual('http://localhost:9000/#/login')
     });
 
-    xit('should login success', function () {
+    it('should login success', function () {
         page.login.clickLogin();
         expect(browser.getCurrentUrl()).toEqual('http://localhost:9000/#/login')
         page.login.inputLoginInfo(data.yan);

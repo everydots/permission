@@ -17,10 +17,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userDao;
 
     public boolean validateUser(SignInModel signInModel) {
-        if (signInModel.getUsername() != null) {
-            User existingUser = userDao.getUser(signInModel.getUsername());
-            return signInModel.getPassword().equals(existingUser.getPassword());
-        } else return false;
+        User existingUser = userDao.getUser(signInModel.getUsername());
+        return existingUser != null && signInModel.getPassword().equals(existingUser.getPassword());
     }
 
     @Override
