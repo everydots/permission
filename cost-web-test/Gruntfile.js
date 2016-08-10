@@ -2,6 +2,13 @@ module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
+        mkdir: {
+            all: {
+                options: {
+                    create: ['e2e-test/target/screenshots']
+                }
+            }
+        },
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
             files: ['Gruntfile.js', 'specs/*.js'],
@@ -59,6 +66,7 @@ module.exports = function (grunt) {
                 keepAlive: true,
                 configFile: "e2e-test/config/protractor.conf.js",
                 noColor: true
+
             },
             e2e: {
                 options: {
@@ -94,9 +102,9 @@ module.exports = function (grunt) {
     /*grunt.loadNpmTasks('grunt-contrib-jshint');
      grunt.loadNpmTasks('grunt-contrib-uglify');
      grunt.loadNpmTasks('grunt-contrib-concat');
-     grunt.loadNpmTasks('grunt-contrib-clean');
-     grunt.loadNpmTasks('grunt-protractor-runner');
-     grunt.loadNpmTasks('grunt-usemin');*/
+     grunt.loadNpmTasks('grunt-contrib-clean');*/
+    grunt.loadNpmTasks('grunt-protractor-runner');
+    //grunt.loadNpmTasks('grunt-usemin');
 
     require('load-grunt-tasks')(grunt);
 
@@ -104,7 +112,7 @@ module.exports = function (grunt) {
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'jshint']);
     grunt.registerTask('int', ['mochaTest']);
-    grunt.registerTask('e2e', ['protractor:e2e']);
+    grunt.registerTask('e2e', ['mkdir', 'protractor:e2e']);
     grunt.registerTask('minify', ['useminPrepare', 'concat:generated', 'uglify:generated', 'usemin', 'clean']);
     grunt.registerTask('min', ['uglify:generated']);
 
