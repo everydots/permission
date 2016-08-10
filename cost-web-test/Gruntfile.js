@@ -77,10 +77,15 @@ module.exports = function (grunt) {
         mochaTest: {
             test: {
                 options: {
-                    reporter: 'spec',
-                    captureFile: 'test-report.html'
+                    reporter: 'mochawesome', //You need to change this !
+                    colors: true,
+                    summery: true,
+                    captureFile: 'target/test-report.html',
+                    quiet: false,
+                    clearRequireCache: true
                 },
-                src: ['integration-test/*.js']
+                src: ['integration-test/*.js'],
+                excludes: ['plugins']
             }
         }
     });
