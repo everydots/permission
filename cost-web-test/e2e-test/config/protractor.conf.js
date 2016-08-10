@@ -6,7 +6,7 @@ exports.config = {
 
     // Spec patterns are relative to the current working directly when
     // protractor is called.
-    specs: ['e2e-test/**/*spec.js'],
+    specs: ['../../e2e-test/**/*.js'],
 
     baseUrl: 'http://localhost:9000',
     rootElement: 'body',

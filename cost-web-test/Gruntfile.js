@@ -57,7 +57,7 @@ module.exports = function (grunt) {
         protractor: {
             options: {
                 keepAlive: true,
-                configFile: "protractor.conf.js",
+                configFile: "e2e-test/config/protractor.conf.js",
                 noColor: true
             },
             e2e: {
@@ -78,11 +78,11 @@ module.exports = function (grunt) {
 
     // Load the plugin that provides the "uglify" task.
     /*grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-protractor-runner');
-    grunt.loadNpmTasks('grunt-usemin');*/
+     grunt.loadNpmTasks('grunt-contrib-uglify');
+     grunt.loadNpmTasks('grunt-contrib-concat');
+     grunt.loadNpmTasks('grunt-contrib-clean');
+     grunt.loadNpmTasks('grunt-protractor-runner');
+     grunt.loadNpmTasks('grunt-usemin');*/
 
     require('load-grunt-tasks')(grunt);
 
