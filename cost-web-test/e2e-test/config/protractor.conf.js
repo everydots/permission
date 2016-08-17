@@ -26,14 +26,11 @@ exports.config = {
     // Capabilities to be passed to the webdriver instance.
     multiCapabilities: [
         {
-            browserName: 'chrome'
+            browserName: 'phantomjs'
         }
-//        {
-//            browserName: 'phantomjs'
-//        }
     ],
-    beforeLaunch: function() {
-        return new Promise(function(resolve){
+    beforeLaunch: function () {
+        return new Promise(function (resolve) {
             reporter.beforeLaunch(resolve);
         });
     },
@@ -48,8 +45,8 @@ exports.config = {
 
 
     // Close the report after all tests finish
-    afterLaunch: function(exitCode) {
-        return new Promise(function(resolve){
+    afterLaunch: function (exitCode) {
+        return new Promise(function (resolve) {
             reporter.afterLaunch(resolve.bind(this, exitCode));
         });
     },

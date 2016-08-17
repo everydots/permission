@@ -14,4 +14,15 @@ public class RDSClientTest {
         DBInstance freeTierDB = rdsClient.launchFreeTierDB();
         System.out.println(freeTierDB.getDBName());
     }
+
+    @Test
+    public void shouldDisplayRDSInstanceId() throws Exception {
+        RDSClient rdsClient = new RDSClient();
+        DBInstance dbInstance = rdsClient.describeRDSInstance();
+        String dbInstanceIdentifier = dbInstance
+                .getDBInstanceIdentifier();
+        String dbiResourceId = dbInstance.getDbiResourceId();
+        System.out.println(dbInstanceIdentifier);
+        System.out.println(dbiResourceId);
+    }
 }

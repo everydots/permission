@@ -103,7 +103,7 @@ module.exports = function (grunt) {
      grunt.loadNpmTasks('grunt-contrib-uglify');
      grunt.loadNpmTasks('grunt-contrib-concat');
      grunt.loadNpmTasks('grunt-contrib-clean');*/
-    grunt.loadNpmTasks('grunt-protractor-runner');
+    //grunt.loadNpmTasks('grunt-protractor-runner');
     //grunt.loadNpmTasks('grunt-usemin');
 
     require('load-grunt-tasks')(grunt);
